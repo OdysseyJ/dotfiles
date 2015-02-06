@@ -1,18 +1,18 @@
-# dotfiles.git
+# dotfiles
 # made by sublime718
 # JungYG
 
 *Intro
 
-This file is my first dotfiles.
+This is my first dotfiles.
 
 [.vimrc]
-* installation Vundle (Vim plugin managing tool)
-* Define Color Schemes
+* installation Vundle (Vim plugin management tool)
+* Color Schemes
 * plugin setup & key mappings
 
 [.bashrc]
-* changing prompt
+* custom prompt
 
 
 *Install
