@@ -2,7 +2,7 @@
 # made by sublime718
 # JungYG
 
-* Intro
+- Intro
 
 This is my first dotfiles.
 
@@ -15,7 +15,7 @@ This is my first dotfiles.
 * custom prompt
 
 
-* Install
+- Install
 
 * clone this Repo in your local home directory.
 ex) $git clone https://github.com/sublime718/dotfiles.git
