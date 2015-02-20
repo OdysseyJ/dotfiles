@@ -73,7 +73,7 @@ set splitbelow                      " 아래쪽으로 분할
 
 " The-NERD-tree
 nmap <leader>nt :NERDTreeToggle<CR>
-let NERDTreeChDirMode=0
+let NERDTreeChDirMode=1
 let NERDTreeQuitOnOpen=1
 let NERDTreeMouseMode=2
 let NERDTreeShowHidden=1
