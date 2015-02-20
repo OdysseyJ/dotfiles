@@ -68,7 +68,7 @@ set splitright                      " 우측으로 분할
 set splitbelow                      " 아래쪽으로 분할
 
 " Change the mapleader from \ to ,
-:let mapleader=","
+let mapleader=","
 
 
 " The-NERD-tree
