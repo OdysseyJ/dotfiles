@@ -121,6 +121,8 @@ let g:syntastic_check_on_wq = 0
 
 
 " ctrlp
+nnoremap <leader>l :CtrlPLine<CR>
+nnoremap <leader>b :CtrlPBuffer<CR>
 let g:ctrlp_split_window=1
 let g:ctrlp_by_filename=1
 
