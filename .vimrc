@@ -13,6 +13,11 @@ Plugin 'ctrlp.vim'
 Plugin 'minibufexplorerpp'
 Plugin 'Syntastic'
 Plugin 'neocomplcache'
+Plugin 'vim-htmldjango_omnicomplete'
+Plugin 'jQuery'
+Plugin 'molokai'
+Plugin 'PyChimp'
+Plugin 'indentpython.vim'
 
 call vundle#end()
 filetype plugin indent on	" required!
@@ -25,8 +30,8 @@ filetype plugin indent on	" required!
 "
 " ColorSchemes
 " let g:solarized_termcolors=256
-set background=dark
-" colorscheme desert
+" set background=dark
+colorscheme darkblue
 
 set ruler                           " 우측 하단에 행과 열 표시
 set expandtab                       " 탭 문자를 공백 문자로 바꿈
