@@ -18,6 +18,7 @@ Plugin 'jQuery'
 Plugin 'molokai'
 Plugin 'PyChimp'
 Plugin 'indentpython.vim'
+Plugin 'indenthtml.vim'
 
 call vundle#end()
 filetype plugin indent on	" required!
@@ -139,9 +140,9 @@ let g:neocomplcache_enable_at_startup = 1
 " <CR>: close popup and save indent.
 inoremap <silent> <CR> <C-r>=<SID>my_cr_function()<CR>
 function! s:my_cr_function()
-  return neocomplcache#smart_close_popup() . "\<CR>"
-  " For no inserting <CR> key.
-  "return pumvisible() ? neocomplcache#close_popup() : "\<CR>"
+    return neocomplcache#smart_close_popup() . "\<CR>"
+    " For no inserting <CR> key.
+    "return pumvisible() ? neocomplcache#close_popup() : "\<CR>"
 endfunction
 " <TAB>: completion.
 inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
@@ -152,3 +153,9 @@ inoremap <expr><C-y>  neocomplcache#close_popup()
 inoremap <expr><C-e>  neocomplcache#cancel_popup()
 " Close popup by <Space>.
 "inoremap <expr><Space> pumvisible() ? neocomplcache#close_popup() : "\<Space>"
+
+
+" indenthtml
+:let g:html_indent_script1 = "inc"
+:let g:html_indent_style1 = "inc"
+autocmd Filetype html setlocal ts=2 sts=2 sw=2
