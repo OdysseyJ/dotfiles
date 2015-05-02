@@ -167,4 +167,4 @@ autocmd Filetype html setlocal ts=2 sts=2 sw=2 colorcolumn=100 textwidth=99
 " emmet
 let g:user_emmet_install_global = 0
 autocmd Filetype html,css EmmetInstall
-let g:user_emmet_leader_key='<c-z>'
+let g:user_emmet_leader_key='<c-m>'
