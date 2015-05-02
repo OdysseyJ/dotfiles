@@ -19,9 +19,13 @@ Plugin 'molokai'
 Plugin 'PyChimp'
 Plugin 'indentpython.vim'
 Plugin 'indenthtml.vim'
+Plugin 'surround.vim'
+Plugin 'repeat.vim'
+Plugin 'pathogen.vim'
 
 call vundle#end()
 filetype plugin indent on	" required!
+call pathogen#infect()
 "
 " Brief help
 " :BundleList           - list configured bundles
@@ -156,6 +160,11 @@ inoremap <expr><C-e>  neocomplcache#cancel_popup()
 
 
 " indenthtml
-:let g:html_indent_script1 = "inc"
-:let g:html_indent_style1 = "inc"
+let g:html_indent_script1 = "inc"
+let g:html_indent_style1 = "inc"
 autocmd Filetype html setlocal ts=2 sts=2 sw=2 colorcolumn=100 textwidth=99
+
+" emmet
+let g:user_emmet_install_global = 0
+autocmd Filetype html,css EmmetInstall
+let g:user_emmet_leader_key='<c-z>'
