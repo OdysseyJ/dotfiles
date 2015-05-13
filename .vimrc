@@ -22,6 +22,7 @@ Plugin 'indenthtml.vim'
 Plugin 'surround.vim'
 Plugin 'repeat.vim'
 Plugin 'pathogen.vim'
+Plugin 'sudo.vim'
 
 call vundle#end()
 filetype plugin indent on	" required!
