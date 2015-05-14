@@ -81,7 +81,6 @@ set splitbelow                      " 아래쪽으로 분할
 " Change the mapleader from \ to ,
 let mapleader=","
 
-
 " The-NERD-tree
 nmap <leader>nt :NERDTreeToggle<CR>
 let NERDTreeChDirMode=1
@@ -165,9 +164,21 @@ let g:html_indent_script1 = "inc"
 let g:html_indent_style1 = "inc"
 autocmd Filetype html setlocal ts=2 sts=2 sw=2 colorcolumn=100 textwidth=99
 
-" emmet
-let g:user_emmet_install_global = 0
-autocmd Filetype html,css EmmetInstall
-let g:user_emmet_leader_key='<c-m>'
 
 " vim-sparkup
+
+
+" vim-less
+autocmd BufRead, BufNewFile *.less set filetype css
+nnoremap <Leader>m :w <BAR> !lessc % > %:t:r.css<CR><space>
+
+
+" vim-css3-syntax
+ augroup VimCSS3Syntax
+    autocmd!
+
+    autocmd FileType css setlocal iskeyword+=-
+augroup END
+
+:highlight VendorPrefix guifg=#00ffff gui=bold
+:match VendorPrefix /-\(moz\|webkit\|o\|ms\)-[a-zA-Z-]\+/
