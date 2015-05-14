@@ -162,7 +162,7 @@ inoremap <expr><C-e>  neocomplcache#cancel_popup()
 " indenthtml
 let g:html_indent_script1 = "inc"
 let g:html_indent_style1 = "inc"
-autocmd Filetype html setlocal ts=2 sts=2 sw=2 colorcolumn=100 textwidth=99
+autocmd Filetype html,less,css setlocal ts=2 sts=2 sw=2 colorcolumn=100 textwidth=99
 
 
 " vim-sparkup
