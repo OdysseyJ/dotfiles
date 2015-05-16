@@ -10,7 +10,6 @@ Plugin 'gmarik/Vundle.vim'
 Plugin 'The-NERD-tree'
 Plugin 'Tagbar'
 Plugin 'ctrlp.vim'
-Plugin 'minibufexplorerpp'
 Plugin 'Syntastic'
 Plugin 'neocomplcache'
 Plugin 'vim-htmldjango_omnicomplete'
@@ -23,6 +22,8 @@ Plugin 'surround.vim'
 Plugin 'repeat.vim'
 Plugin 'pathogen.vim'
 Plugin 'sudo.vim'
+Plugin 'groenewege/vim-less'
+Plugin 'rstacruz/sparkup'
 
 call vundle#end()
 filetype plugin indent on	" required!
@@ -87,10 +88,10 @@ let NERDTreeChDirMode=1
 let NERDTreeQuitOnOpen=1
 let NERDTreeMouseMode=2
 let NERDTreeShowHidden=1
+let NERDTreeHighlightCursorline=1
 let NERDTreeKeepTreeInNewTab=1
+let NERDTreeWinSize=41
 let g:nerdtree_tabs_open_on_gui_startup=0
-
-
 " Tagbar
 nmap <leader>t :TagbarToggle<CR>
 let g:tagbar_width=40
@@ -157,15 +158,17 @@ inoremap <expr><C-y>  neocomplcache#close_popup()
 inoremap <expr><C-e>  neocomplcache#cancel_popup()
 " Close popup by <Space>.
 "inoremap <expr><Space> pumvisible() ? neocomplcache#close_popup() : "\<Space>"
+autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
+autocmd FileType html setlocal omnifunc=htmlcomplete#CompleteTags
+autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
+autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
+autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
 
 
 " indenthtml
 let g:html_indent_script1 = "inc"
 let g:html_indent_style1 = "inc"
-autocmd Filetype html,less,css setlocal ts=2 sts=2 sw=2 colorcolumn=100 textwidth=99
-
-
-" vim-sparkup
+autocmd Filetype html,less,css,js setlocal ts=2 sts=2 sw=2 colorcolumn=100 textwidth=99
 
 
 " vim-less
