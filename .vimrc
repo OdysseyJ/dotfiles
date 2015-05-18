@@ -12,6 +12,7 @@ Plugin 'Tagbar'
 Plugin 'ctrlp.vim'
 Plugin 'Syntastic'
 Plugin 'neocomplcache'
+Plugin 'minibufexpl.vim'
 Plugin 'vim-htmldjango_omnicomplete'
 Plugin 'jQuery'
 Plugin 'molokai'
@@ -113,10 +114,8 @@ noremap <C-K>       <C-W>k
 noremap <C-H>       <C-W>h
 noremap <C-L>       <C-W>l
 
-noremap <C-Down>    <C-W>j
-noremap <C-Up>      <C-W>k
-noremap <C-Left>    <C-W>h
-noremap <C-Right>   <C-W>l
+noremap <C-n> :bp<CR>
+noremap <C-m> :bn<CR>
 
 
 " Syntastic
