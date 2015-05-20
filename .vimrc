@@ -77,6 +77,7 @@ set colorcolumn=80                  " 색상으로 열 제한 80
 set textwidth=79                    " 텍스트 너비 79까지 허용
 set cursorline                      " 커서가 있는 라인에 언더라인 표시
 set nojoinspaces                    " j 명령 사용시 마침표 뒤 한칸만 space
+set noswapfile                      " .swp 파일 생성하지 않음
 set splitright                      " 우측으로 분할
 set splitbelow                      " 아래쪽으로 분할
 
@@ -167,7 +168,8 @@ autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
 " indenthtml
 let g:html_indent_script1 = "inc"
 let g:html_indent_style1 = "inc"
-autocmd Filetype html,less,css,js setlocal ts=2 sts=2 sw=2 colorcolumn=100 textwidth=99
+let g:html_indent_inctags = "html,body,head,tbody" 
+autocmd Filetype html,less,css,js,scss setlocal ts=2 sts=2 sw=2 colorcolumn=80 textwidth=79
 
 
 " vim-less
