@@ -1,4 +1,4 @@
-set nocompatible        " be iMproved
+set nocompatible                "ViImproved
 filetype off
 
 set rtp +=~/.vim/bundle/Vundle.vim/
@@ -25,6 +25,11 @@ Plugin 'pathogen.vim'
 Plugin 'sudo.vim'
 Plugin 'groenewege/vim-less'
 Plugin 'rstacruz/sparkup'
+Plugin 'The-NERD-Commenter'
+Plugin 'burnettk/vim-angular'
+Plugin 'Enhanced-Javascript-syntax'
+Plugin 'Javascript-Indentation'
+Plugin 'fugitive.vim'
 
 call vundle#end()
 filetype plugin indent on	" required!
@@ -134,7 +139,8 @@ let g:syntastic_check_on_wq = 0
 " ctrlp
 nnoremap <leader>l :CtrlPLine<CR>
 nnoremap <leader>b :CtrlPBuffer<CR>
-let g:ctrlp_split_window=1
+nmap <leader>m :CtrlPMRUFiles<CR>
+let g:ctrlp_open_new_file = 'v'
 let g:ctrlp_by_filename=1
 
 
@@ -151,11 +157,6 @@ function! s:my_cr_function()
 endfunction
 " <TAB>: completion.
 inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
-" <C-h>, <BS>: close popup and delete backword char.
-inoremap <expr><C-h> neocomplcache#smart_close_popup()."\<C-h>"
-inoremap <expr><BS> neocomplcache#smart_close_popup()."\<C-h>"
-inoremap <expr><C-y>  neocomplcache#close_popup()
-inoremap <expr><C-e>  neocomplcache#cancel_popup()
 " Close popup by <Space>.
 "inoremap <expr><Space> pumvisible() ? neocomplcache#close_popup() : "\<Space>"
 autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
@@ -168,17 +169,17 @@ autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
 " indenthtml
 let g:html_indent_script1 = "inc"
 let g:html_indent_style1 = "inc"
-let g:html_indent_inctags = "html,body,head,tbody" 
+let g:html_indent_inctags = "html,body,head,tbody"
 autocmd Filetype html,less,css,js,scss setlocal ts=2 sts=2 sw=2 colorcolumn=80 textwidth=79
 
 
 " vim-less
 autocmd BufRead, BufNewFile *.less set filetype css
-nnoremap <Leader>m :w <BAR> !lessc % > %:t:r.css<CR><space>
+" nnoremap <Leader>m :w <BAR> !lessc % > %:t:r.css<CR><space>
 
 
 " vim-css3-syntax
- augroup VimCSS3Syntax
+augroup VimCSS3Syntax
     autocmd!
 
     autocmd FileType css setlocal iskeyword+=-
@@ -186,3 +187,8 @@ augroup END
 
 :highlight VendorPrefix guifg=#00ffff gui=bold
 :match VendorPrefix /-\(moz\|webkit\|o\|ms\)-[a-zA-Z-]\+/
+
+
+" The-NERD-Commenter
+filetype plugin on
+let NERDSpaceDelims=1
