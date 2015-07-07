@@ -15,8 +15,6 @@ Plugin 'neocomplcache'
 Plugin 'minibufexpl.vim'
 Plugin 'vim-htmldjango_omnicomplete'
 Plugin 'jQuery'
-Plugin 'molokai'
-Plugin 'PyChimp'
 Plugin 'indentpython.vim'
 Plugin 'indenthtml.vim'
 Plugin 'surround.vim'
@@ -43,8 +41,8 @@ call pathogen#infect()
 "
 " ColorSchemes
 " let g:solarized_termcolors=256
-" set background=dark
-colorscheme darkblue
+colorscheme desert
+set background=dark
 
 set ruler                           " 우측 하단에 행과 열 표시
 set expandtab                       " 탭 문자를 공백 문자로 바꿈
@@ -57,7 +55,7 @@ set copyindent                      " 들여쓰기를 복사함
 set showmatch                       " 괄호를 닫을 때 열었던 괄호와 매칭
 set smarttab                        " 좀 더 지능적인 들여쓰기
 set incsearch                       " 키워드를 입력할 때마다 검색하는 점진검색
-set title                           " 제목 표시줄에 파일명 표시
+set title                           " 제목 표시줄에 파일명 시
 set hlsearch                        " 검색어 색상 강조
 set history=1000                    " 편집명령기록을 1000개까지 저장
 set list                            " 탭문자 줄의 끝 등, 불가시 문자를 표시
@@ -86,12 +84,19 @@ set noswapfile                      " .swp 파일 생성하지 않음
 set splitright                      " 우측으로 분할
 set splitbelow                      " 아래쪽으로 분할
 
+
+" trailing whitespace del
+nnoremap <leader>zz :%s/\s\+$//e<CR>
+
 " Change the mapleader from \ to ,
 let mapleader=","
 
+" mapping f arrow key-down like j
+noremap f j
+
 " The-NERD-tree
-nmap <leader>nt :NERDTreeToggle<CR>
-let NERDTreeChDirMode=1
+nmap <leader>nt :NERDTreeFind<CR>
+let NERDTreeChDirMode=2
 let NERDTreeQuitOnOpen=1
 let NERDTreeMouseMode=2
 let NERDTreeShowHidden=1
@@ -99,11 +104,13 @@ let NERDTreeHighlightCursorline=1
 let NERDTreeKeepTreeInNewTab=1
 let NERDTreeWinSize=41
 let g:nerdtree_tabs_open_on_gui_startup=0
+
+
 " Tagbar
 nmap <leader>t :TagbarToggle<CR>
 let g:tagbar_width=40
 let g:tagbar_autofocus=1
-let g:tagbar_autoclose=0
+let g:tagbar_autoclose=1
 let g:tagbar_iconchars = ['▸', '▾']
 let g:tagbar_systemenc = 'utf-8'
 
@@ -170,7 +177,7 @@ autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
 let g:html_indent_script1 = "inc"
 let g:html_indent_style1 = "inc"
 let g:html_indent_inctags = "html,body,head,tbody"
-autocmd Filetype html,less,css,js,scss setlocal ts=2 sts=2 sw=2 colorcolumn=80 textwidth=79
+autocmd Filetype html,htmldjango,less,css,scss,javascript setlocal ts=2 sts=2 sw=2 colorcolumn=80 textwidth=79 smarttab copyindent
 
 
 " vim-less
@@ -192,3 +199,51 @@ augroup END
 " The-NERD-Commenter
 filetype plugin on
 let NERDSpaceDelims=1
+
+
+" StatusLine style
+
+function! InsertStatuslineColor(mode)
+    if a:mode == 'i'
+        hi statusline guibg=Cyan ctermfg=6 guifg=Black ctermbg=0
+    elseif a:mode == 'r'
+        hi statusline guibg=Purple ctermfg=5 guifg=Black ctermbg=0
+    else
+        hi statusline guibg=DarkRed ctermfg=1 guifg=Black ctermbg=0
+    endif
+endfunction
+
+au InsertEnter * call InsertStatuslineColor(v:insertmode)
+au InsertLeave * hi statusline guibg=DarkGrey ctermfg=8 guifg=White ctermbg=15
+
+" default the statusline to green when entering Vim
+hi statusline guibg=DarkGrey ctermfg=8 guifg=White ctermbg=15
+
+" Formats the statusline
+set laststatus=2
+set statusline=%f                               "file name
+set statusline+=[%{strlen(&fenc)?&fenc:'none'}, "file encoding
+set statusline+=%{&ff}]                         "file format
+set statusline+=%y                              "filetype
+set statusline+=%h                              "help file flag
+set statusline+=%m                              "modified flag
+set statusline+=%r                              "read only flag
+
+" " Puts in the current git status
+    " if count(g:pathogen_disabled, 'Fugitive') < 1
+        " set statusline+=%{fugitive#statusline()}
+    " endif
+
+" " Puts in syntastic warnings
+    " if count(g:pathogen_disabled, 'Syntastic') < 1
+        " set statusline+=%#warningmsg#
+        " set statusline+=%{SyntasticStatuslineFlag()}
+        " set statusline+=%*
+    " endif
+
+set statusline+=\ %=                " align left
+set statusline+=Line:%l/%L[%p%%]    " line X of Y [percent of file]
+set statusline+=\ Col:%c            " current column
+set statusline+=\ Buf:%n            " Buffer number
+set statusline+=\ [%b][0x%B]\       " ASCII and byte code under cursor
+
