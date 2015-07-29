@@ -25,9 +25,10 @@ Plugin 'groenewege/vim-less'
 Plugin 'rstacruz/sparkup'
 Plugin 'The-NERD-Commenter'
 Plugin 'burnettk/vim-angular'
-Plugin 'Enhanced-Javascript-syntax'
-Plugin 'Javascript-Indentation'
 Plugin 'fugitive.vim'
+Plugin 'jellybeans.vim'
+Plugin 'inkpot'
+Plugin 'Yggdroot/indentLine'
 
 call vundle#end()
 filetype plugin indent on	" required!
@@ -37,11 +38,12 @@ call pathogen#infect()
 " :BundleList           - list configured bundles
 " :BundleInstall(!)     - install(update) bundles
 " :BundleSearch(!) foo  - search(or refresh cache first) for foo
-" :BundleClean(!)       - confirm(or auto-approve) removal of unused bundles
-"
+" :BundleClean(!)       - confirm(or auto-approve) removal of unused bundles"
+
+
 " ColorSchemes
-" let g:solarized_termcolors=256
-colorscheme desert
+let g:solarized_termcolors=256
+colorscheme inkpot
 set background=dark
 
 set ruler                           " 우측 하단에 행과 열 표시
@@ -69,7 +71,7 @@ set wildmenu
 set wildmode=list:longest
 set visualbell                      " 경고음 대신 화면을 깜빡임
 set number                          " 라인 넘버를 표시
-"set relativenumber
+set relativenumber
 set undofile                        " undo를 파일로 저장하여 관리
 set undodir=$HOME/.vim/undo         " undo history 가 저장될 공간
 set undolevels=1000                 " 1000번의 작업취소횟수 가능
@@ -85,6 +87,12 @@ set splitright                      " 우측으로 분할
 set splitbelow                      " 아래쪽으로 분할
 
 
+" set font
+if has('gui_running')
+  set guifont=Ubuntu\ Mono\ 13
+endif
+
+
 " trailing whitespace del
 nnoremap <leader>zz :%s/\s\+$//e<CR>
 
@@ -93,6 +101,7 @@ let mapleader=","
 
 " mapping f arrow key-down like j
 noremap f j
+noremap t k
 
 " The-NERD-tree
 nmap <leader>nt :NERDTreeFind<CR>
@@ -135,12 +144,15 @@ noremap <C-m> :bn<CR>
 set statusline+=%#warningmsg#
 set statusline+=%{SyntasticStatuslineFlag()}
 set statusline+=%*
-highlight SyntasticError guibg=#2f0000
+highlight SyntasticErrorSign guifg=white guibg=red
+highlight SyntasticErrorLine guibg=#2f0000
 
-let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_auto_jump = 2
+let g:syntastic_always_populate_loc_list = 2
 let g:syntastic_auto_loc_list = 1
 let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0
+let g:syntastic_loc_list_height = 5
 
 
 " ctrlp
@@ -149,6 +161,8 @@ nnoremap <leader>b :CtrlPBuffer<CR>
 nmap <leader>m :CtrlPMRUFiles<CR>
 let g:ctrlp_open_new_file = 'v'
 let g:ctrlp_by_filename=1
+let g:ctrlp_max_depth = 40
+let g:ctrlp_use_caching = 1
 
 
 " neocomplcache
@@ -201,23 +215,28 @@ filetype plugin on
 let NERDSpaceDelims=1
 
 
+" indentLine
+let g:indentLine_color_gui='#A4E57E'
+" let g:indentLine_char='c'
+
 " StatusLine style
 
 function! InsertStatuslineColor(mode)
     if a:mode == 'i'
-        hi statusline guibg=Cyan ctermfg=6 guifg=Black ctermbg=0
+        hi statusline guibg=magenta ctermfg=6 guifg=Black ctermbg=0
     elseif a:mode == 'r'
-        hi statusline guibg=Purple ctermfg=5 guifg=Black ctermbg=0
+        hi statusline guibg=blue ctermfg=5 guifg=Black ctermbg=0
     else
-        hi statusline guibg=DarkRed ctermfg=1 guifg=Black ctermbg=0
+        hi statusline guibg=red ctermfg=1 guifg=Black ctermbg=0
     endif
 endfunction
 
 au InsertEnter * call InsertStatuslineColor(v:insertmode)
-au InsertLeave * hi statusline guibg=DarkGrey ctermfg=8 guifg=White ctermbg=15
+au InsertChange * call InsertStatuslineColor(v:insertmode)
+au InsertLeave * hi statusline guibg=green ctermfg=8 guifg=white ctermbg=15
 
 " default the statusline to green when entering Vim
-hi statusline guibg=DarkGrey ctermfg=8 guifg=White ctermbg=15
+hi statusline guibg=green ctermfg=8 guifg=White ctermbg=15
 
 " Formats the statusline
 set laststatus=2
