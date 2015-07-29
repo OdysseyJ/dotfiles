@@ -1,6 +1,6 @@
 # dotfiles
 # made by sublime718
-# JungYG
+# YG Jung
 
 - Intro
 
