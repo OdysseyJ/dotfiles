@@ -12,7 +12,7 @@ Plugin 'Tagbar'
 Plugin 'ctrlp.vim'
 Plugin 'Syntastic'
 Plugin 'neocomplcache'
-Plugin 'minibufexpl.vim'
+Plugin 'bling/vim-airline'
 Plugin 'vim-htmldjango_omnicomplete'
 Plugin 'jQuery'
 Plugin 'indentpython.vim'
@@ -26,9 +26,9 @@ Plugin 'rstacruz/sparkup'
 Plugin 'The-NERD-Commenter'
 Plugin 'burnettk/vim-angular'
 Plugin 'fugitive.vim'
-Plugin 'jellybeans.vim'
-Plugin 'inkpot'
 Plugin 'Yggdroot/indentLine'
+Plugin 'Solarized'
+Plugin 'davidhalter/jedi-vim'
 
 call vundle#end()
 filetype plugin indent on	" required!
@@ -43,8 +43,11 @@ call pathogen#infect()
 
 " ColorSchemes
 let g:solarized_termcolors=256
-colorscheme inkpot
+let g:solarized_bold=1
+let g:solarized_contrast="high"
+syntax enable
 set background=dark
+colorscheme solarized
 
 set ruler                           " 우측 하단에 행과 열 표시
 set expandtab                       " 탭 문자를 공백 문자로 바꿈
@@ -69,7 +72,7 @@ set showcmd                         " 현재 입력하고 있는 명령 보이�
 set hidden " Controversial
 set wildmenu
 set wildmode=list:longest
-set visualbell                      " 경고음 대신 화면을 깜빡임
+set visualbell                      " 경고음 대신 화면을 빡임
 set number                          " 라인 넘버를 표시
 set relativenumber
 set undofile                        " undo를 파일로 저장하여 관리
@@ -87,9 +90,10 @@ set splitright                      " 우측으로 분할
 set splitbelow                      " 아래쪽으로 분할
 
 
-" set font
+" set gui setting
 if has('gui_running')
-  set guifont=Ubuntu\ Mono\ 13
+  set guifont=Monospace\ 13
+  set background=dark
 endif
 
 
@@ -102,6 +106,15 @@ let mapleader=","
 " mapping f arrow key-down like j
 noremap f j
 noremap t k
+" window moving key
+noremap <C-J>       <C-W>j
+noremap <C-K>       <C-W>k
+noremap <C-H>       <C-W>h
+noremap <C-L>       <C-W>l
+"buffer moving key
+noremap <C-n> :bp<CR>
+noremap <C-m> :bn<CR>
+
 
 " The-NERD-tree
 nmap <leader>nt :NERDTreeFind<CR>
@@ -111,7 +124,7 @@ let NERDTreeMouseMode=2
 let NERDTreeShowHidden=1
 let NERDTreeHighlightCursorline=1
 let NERDTreeKeepTreeInNewTab=1
-let NERDTreeWinSize=41
+let NERDTreeWinSize=60
 let g:nerdtree_tabs_open_on_gui_startup=0
 
 
@@ -124,20 +137,14 @@ let g:tagbar_iconchars = ['▸', '▾']
 let g:tagbar_systemenc = 'utf-8'
 
 
-" minibufexpl
-let g:miniBufExplMapWindowNavVim=1
-let g:miniBufExplMapWindowNavArrows=1
-let g:miniBufExplMapCTabSwitchBufs=1
-let g:miniBufExplModeSelTarget=1
-let g:miniBufExplBuffersNeeded=1
+" Airline
+let g:airline_theme             = 'bubblegum'
+let g:airline_enable_branch     = 1
+let g:airline_enable_syntastic  = 1
 
-noremap <C-J>       <C-W>j
-noremap <C-K>       <C-W>k
-noremap <C-H>       <C-W>h
-noremap <C-L>       <C-W>l
-
-noremap <C-n> :bp<CR>
-noremap <C-m> :bn<CR>
+let g:airline#extensions#tabline#enabled = 1
+let g:airline#extensions#tabline#left_sep = ' '
+let g:airline#extensions#tabline#left_alt_sep = ' | '
 
 
 " Syntastic
@@ -225,7 +232,7 @@ function! InsertStatuslineColor(mode)
     if a:mode == 'i'
         hi statusline guibg=magenta ctermfg=6 guifg=Black ctermbg=0
     elseif a:mode == 'r'
-        hi statusline guibg=blue ctermfg=5 guifg=Black ctermbg=0
+        hi statusline guibg=blue ctermfg=5 guifg=White ctermbg=0
     else
         hi statusline guibg=red ctermfg=1 guifg=Black ctermbg=0
     endif
@@ -260,9 +267,9 @@ set statusline+=%r                              "read only flag
         " set statusline+=%*
     " endif
 
-set statusline+=\ %=                " align left
-set statusline+=Line:%l/%L[%p%%]    " line X of Y [percent of file]
-set statusline+=\ Col:%c            " current column
-set statusline+=\ Buf:%n            " Buffer number
-set statusline+=\ [%b][0x%B]\       " ASCII and byte code under cursor
+" set statusline+=\ %=                " align left
+" set statusline+=Line:%l/%L[%p%%]    " line X of Y [percent of file]
+" set statusline+=\ Col:%c            " current column
+" set statusline+=\ Buf:%n            " Buffer number
+" set statusline+=\ [%b][0x%B]\       " ASCII and byte code under cursor
 
