@@ -10,7 +10,6 @@ Plugin 'gmarik/Vundle.vim'
 Plugin 'The-NERD-tree'
 Plugin 'Tagbar'
 Plugin 'ctrlp.vim'
-Plugin 'Syntastic'
 Plugin 'neocomplcache'
 Plugin 'bling/vim-airline'
 Plugin 'vim-htmldjango_omnicomplete'
@@ -26,7 +25,7 @@ Plugin 'rstacruz/sparkup'
 Plugin 'The-NERD-Commenter'
 Plugin 'burnettk/vim-angular'
 Plugin 'fugitive.vim'
-Plugin 'Yggdroot/indentLine'
+Plugin 'nathanaelkane/vim-indent-guides.git'
 Plugin 'Solarized'
 Plugin 'davidhalter/jedi-vim'
 
@@ -45,6 +44,7 @@ call pathogen#infect()
 let g:solarized_termcolors=256
 let g:solarized_bold=1
 let g:solarized_contrast="high"
+let g:solarized_termtrans=1
 syntax enable
 set background=dark
 colorscheme solarized
@@ -92,7 +92,7 @@ set splitbelow                      " 아래쪽으로 분할
 
 " set gui setting
 if has('gui_running')
-  set guifont=Monospace\ 13
+  " set guifont=Monaco\ 11
   set background=dark
 endif
 
@@ -139,8 +139,8 @@ let g:tagbar_systemenc = 'utf-8'
 
 " Airline
 let g:airline_theme             = 'bubblegum'
-let g:airline_enable_branch     = 1
-let g:airline_enable_syntastic  = 1
+" let g:airline#extensions#syntastic#enabled = 1
+let g:airline#extensions#branch#enabled = 1
 
 let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tabline#left_sep = ' '
@@ -148,18 +148,18 @@ let g:airline#extensions#tabline#left_alt_sep = ' | '
 
 
 " Syntastic
-set statusline+=%#warningmsg#
-set statusline+=%{SyntasticStatuslineFlag()}
-set statusline+=%*
-highlight SyntasticErrorSign guifg=white guibg=red
-highlight SyntasticErrorLine guibg=#2f0000
+" set statusline+=%#warningmsg#
+" set statusline+=%{SyntasticStatuslineFlag()}
+" set statusline+=%*
+" highlight SyntasticErrorSign guifg=white guibg=red
+" highlight SyntasticErrorLine guibg=#2f0000
 
-let g:syntastic_auto_jump = 2
-let g:syntastic_always_populate_loc_list = 2
-let g:syntastic_auto_loc_list = 1
-let g:syntastic_check_on_open = 1
-let g:syntastic_check_on_wq = 0
-let g:syntastic_loc_list_height = 5
+" let g:syntastic_auto_jump = 2
+" let g:syntastic_always_populate_loc_list = 2
+" let g:syntastic_auto_loc_list = 1
+" let g:syntastic_check_on_open = 1
+" let g:syntastic_check_on_wq = 0
+" let g:syntastic_loc_list_height = 5
 
 
 " ctrlp
@@ -170,6 +170,7 @@ let g:ctrlp_open_new_file = 'v'
 let g:ctrlp_by_filename=1
 let g:ctrlp_max_depth = 40
 let g:ctrlp_use_caching = 1
+let g:ctrlp_custom_ignore = '\.git$\|\.hg$\|\.svn$\|\.yardoc$|\.pyc$\'
 
 
 " neocomplcache
@@ -195,8 +196,8 @@ autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
 
 
 " indenthtml
-let g:html_indent_script1 = "inc"
-let g:html_indent_style1 = "inc"
+" let g:html_indent_script1 = "inc"
+" let g:html_indent_style1 = "inc"
 let g:html_indent_inctags = "html,body,head,tbody"
 autocmd Filetype html,htmldjango,less,css,scss,javascript setlocal ts=2 sts=2 sw=2 colorcolumn=80 textwidth=79 smarttab copyindent
 
@@ -204,7 +205,6 @@ autocmd Filetype html,htmldjango,less,css,scss,javascript setlocal ts=2 sts=2 sw
 " vim-less
 autocmd BufRead, BufNewFile *.less set filetype css
 " nnoremap <Leader>m :w <BAR> !lessc % > %:t:r.css<CR><space>
-
 
 " vim-css3-syntax
 augroup VimCSS3Syntax
@@ -222,54 +222,12 @@ filetype plugin on
 let NERDSpaceDelims=1
 
 
-" indentLine
-let g:indentLine_color_gui='#A4E57E'
-" let g:indentLine_char='c'
+" Indent-guides
+hi IndentGuidesOdd  ctermbg=gray
+hi IndentGuidesEven ctermbg=darkgrey
 
-" StatusLine style
-
-function! InsertStatuslineColor(mode)
-    if a:mode == 'i'
-        hi statusline guibg=magenta ctermfg=6 guifg=Black ctermbg=0
-    elseif a:mode == 'r'
-        hi statusline guibg=blue ctermfg=5 guifg=White ctermbg=0
-    else
-        hi statusline guibg=red ctermfg=1 guifg=Black ctermbg=0
-    endif
-endfunction
-
-au InsertEnter * call InsertStatuslineColor(v:insertmode)
-au InsertChange * call InsertStatuslineColor(v:insertmode)
-au InsertLeave * hi statusline guibg=green ctermfg=8 guifg=white ctermbg=15
-
-" default the statusline to green when entering Vim
-hi statusline guibg=green ctermfg=8 guifg=White ctermbg=15
-
-" Formats the statusline
-set laststatus=2
-set statusline=%f                               "file name
-set statusline+=[%{strlen(&fenc)?&fenc:'none'}, "file encoding
-set statusline+=%{&ff}]                         "file format
-set statusline+=%y                              "filetype
-set statusline+=%h                              "help file flag
-set statusline+=%m                              "modified flag
-set statusline+=%r                              "read only flag
-
-" " Puts in the current git status
-    " if count(g:pathogen_disabled, 'Fugitive') < 1
-        " set statusline+=%{fugitive#statusline()}
-    " endif
-
-" " Puts in syntastic warnings
-    " if count(g:pathogen_disabled, 'Syntastic') < 1
-        " set statusline+=%#warningmsg#
-        " set statusline+=%{SyntasticStatuslineFlag()}
-        " set statusline+=%*
-    " endif
-
-" set statusline+=\ %=                " align left
-" set statusline+=Line:%l/%L[%p%%]    " line X of Y [percent of file]
-" set statusline+=\ Col:%c            " current column
-" set statusline+=\ Buf:%n            " Buffer number
-" set statusline+=\ [%b][0x%B]\       " ASCII and byte code under cursor
+let g:indent_guides_enable_on_vim_startup = 1
+let g:indent_guides_indent_levels = 30
+let g:indent_guides_start_level = 2
+let g:indent_guides_exclude_filetypes = ['help', 'nerdtree']
 
