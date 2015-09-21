@@ -11,6 +11,7 @@ Plugin 'The-NERD-tree'
 Plugin 'Tagbar'
 Plugin 'ctrlp.vim'
 Plugin 'neocomplcache'
+Plugin 'Syntastic'
 Plugin 'bling/vim-airline'
 Plugin 'vim-htmldjango_omnicomplete'
 Plugin 'jQuery'
@@ -92,7 +93,7 @@ set splitbelow                      " 아래쪽으로 분할
 
 " set gui setting
 if has('gui_running')
-  " set guifont=Monaco\ 11
+  set guifont=Monaco:h13
   set background=dark
 endif
 
@@ -146,20 +147,16 @@ let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tabline#left_sep = ' '
 let g:airline#extensions#tabline#left_alt_sep = ' | '
 
-
 " Syntastic
-" set statusline+=%#warningmsg#
-" set statusline+=%{SyntasticStatuslineFlag()}
-" set statusline+=%*
-" highlight SyntasticErrorSign guifg=white guibg=red
-" highlight SyntasticErrorLine guibg=#2f0000
+set statusline+=%#warningmsg#
+set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%*
 
-" let g:syntastic_auto_jump = 2
-" let g:syntastic_always_populate_loc_list = 2
-" let g:syntastic_auto_loc_list = 1
-" let g:syntastic_check_on_open = 1
-" let g:syntastic_check_on_wq = 0
-" let g:syntastic_loc_list_height = 5
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_auto_loc_list = 1
+let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_wq = 0
+let g:syntastic_html_checkers = ['']
 
 
 " ctrlp
@@ -196,8 +193,8 @@ autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
 
 
 " indenthtml
-" let g:html_indent_script1 = "inc"
-" let g:html_indent_style1 = "inc"
+let g:html_indent_script1 = "inc"
+let g:html_indent_style1 = "inc"
 let g:html_indent_inctags = "html,body,head,tbody"
 autocmd Filetype html,htmldjango,less,css,scss,javascript setlocal ts=2 sts=2 sw=2 colorcolumn=80 textwidth=79 smarttab copyindent
 
