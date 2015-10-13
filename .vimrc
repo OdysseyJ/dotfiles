@@ -29,10 +29,12 @@ Plugin 'fugitive.vim'
 Plugin 'nathanaelkane/vim-indent-guides.git'
 Plugin 'Solarized'
 Plugin 'davidhalter/jedi-vim'
+Plugin 'Valloric/YouCompleteMe'
 
 call vundle#end()
 filetype plugin indent on	" required!
-call pathogen#infect()
+" call pathogen#infect()
+execute pathogen#infect()
 "
 " Brief help
 " :BundleList           - list configured bundles
@@ -46,49 +48,49 @@ let g:solarized_termcolors=256
 let g:solarized_bold=1
 let g:solarized_contrast="high"
 let g:solarized_termtrans=1
+
 syntax enable
 set background=dark
 colorscheme solarized
 
-set ruler                           " 우측 하단에 행과 열 표시
-set expandtab                       " 탭 문자를 공백 문자로 바꿈
-set tabstop=4                       " 탭 간격 설정
-set shiftwidth=4                    " 탭이 눌려질 때 공간의 수
-set softtabstop=4                   " 탭을 삭제할 때 4칸 단위로 삭제
-set backspace=indent,eol,start      " 들여쓰기, 줄의 끝, 시작에서 백스페이스를 사용시 이전 줄과 연결됨
-set autoindent                      " 자동 들여쓰기
-set copyindent                      " 들여쓰기를 복사함
-set showmatch                       " 괄호를 닫을 때 열었던 괄호와 매칭
-set smarttab                        " 좀 더 지능적인 들여쓰기
-set incsearch                       " 키워드를 입력할 때마다 검색하는 점진검색
-set title                           " 제목 표시줄에 파일명 시
-set hlsearch                        " 검색어 색상 강조
-set history=1000                    " 편집명령기록을 1000개까지 저장
-set list                            " 탭문자 줄의 끝 등, 불가시 문자를 표시
-set listchars=tab:>-,trail:-,extends:# " 위의 list시에 표시할 문자를 지정한다
-set wrap                            " 자동 줄바꿈
-set pastetoggle=<leader>p           " 붙여넣기시 자동 들여쓰기 적용
-set encoding=utf-8                  " 문자 인코딩
-set showcmd                         " 현재 입력하고 있는 명령 보이기
-set hidden " Controversial
+set ruler
+set expandtab
+set tabstop=4
+set shiftwidth=4
+set softtabstop=4
+set backspace=indent,eol,start
+set autoindent
+set copyindent
+set showmatch
+set smarttab
+set incsearch
+set title
+set hlsearch
+set history=1500
+set list
+set listchars=tab:>-,trail:-,extends:#
+set wrap
+set pastetoggle=<leader>p
+set encoding=utf-8
+set showcmd
+set hidden
 set wildmenu
 set wildmode=list:longest
-set visualbell                      " 경고음 대신 화면을 빡임
-set number                          " 라인 넘버를 표시
+set visualbell
+set number
 set relativenumber
-set undofile                        " undo를 파일로 저장하여 관리
-set undodir=$HOME/.vim/undo         " undo history 가 저장될 공간
-set undolevels=1000                 " 1000번의 작업취소횟수 가능
-set ignorecase                      " 찾기 대소문자 구별하지 않음
-set smartcase                       " 표현식의 대소문자는 구분
-set gdefault                        " /g 기본기본설정
-set colorcolumn=80                  " 색상으로 열 제한 80
-set textwidth=79                    " 텍스트 너비 79까지 허용
-set cursorline                      " 커서가 있는 라인에 언더라인 표시
-set nojoinspaces                    " j 명령 사용시 마침표 뒤 한칸만 space
-set noswapfile                      " .swp 파일 생성하지 않음
-set splitright                      " 우측으로 분할
-set splitbelow                      " 아래쪽으로 분할
+set undofile
+set undodir=$HOME/.vim/undo
+set undolevels=1500
+set ignorecase
+set smartcase
+set gdefault
+set colorcolumn=80
+set cursorline
+set nojoinspaces
+set noswapfile
+set splitright
+set splitbelow
 
 
 " set gui setting
@@ -104,9 +106,6 @@ nnoremap <leader>zz :%s/\s\+$//e<CR>
 " Change the mapleader from \ to ,
 let mapleader=","
 
-" mapping f arrow key-down like j
-noremap f j
-noremap t k
 " window moving key
 noremap <C-J>       <C-W>j
 noremap <C-K>       <C-W>k
@@ -139,13 +138,26 @@ let g:tagbar_systemenc = 'utf-8'
 
 
 " Airline
-let g:airline_theme             = 'bubblegum'
+let g:airline_theme             = 'solarized'
 " let g:airline#extensions#syntastic#enabled = 1
 let g:airline#extensions#branch#enabled = 1
 
 let g:airline#extensions#tabline#enabled = 1
+let g:airline#extensions#tabline#show_buffers = 1
 let g:airline#extensions#tabline#left_sep = ' '
 let g:airline#extensions#tabline#left_alt_sep = ' | '
+
+let g:airline#extensions#tabline#buffer_idx_mode = 1
+nmap <leader>1 <Plug>AirlineSelectTab1
+nmap <leader>2 <Plug>AirlineSelectTab2
+nmap <leader>3 <Plug>AirlineSelectTab3
+nmap <leader>4 <Plug>AirlineSelectTab4
+nmap <leader>5 <Plug>AirlineSelectTab5
+nmap <leader>6 <Plug>AirlineSelectTab6
+nmap <leader>7 <Plug>AirlineSelectTab7
+nmap <leader>8 <Plug>AirlineSelectTab8
+nmap <leader>9 <Plug>AirlineSelectTab9
+
 
 " Syntastic
 set statusline+=%#warningmsg#
@@ -173,7 +185,7 @@ let g:ctrlp_custom_ignore = '\.git$\|\.hg$\|\.svn$\|\.yardoc$|\.pyc$\'
 " neocomplcache
 
 " Recommended key-mappings.
-let g:neocomplcache_enable_at_startup = 1
+let g:neocomplcache_enable_at_startup = 0
 " <CR>: close popup and save indent.
 inoremap <silent> <CR> <C-r>=<SID>my_cr_function()<CR>
 function! s:my_cr_function()
@@ -194,9 +206,9 @@ autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
 
 " indenthtml
 let g:html_indent_script1 = "inc"
-let g:html_indent_style1 = "inc"
-let g:html_indent_inctags = "html,body,head,tbody"
-autocmd Filetype html,htmldjango,less,css,scss,javascript setlocal ts=2 sts=2 sw=2 colorcolumn=80 textwidth=79 smarttab copyindent
+let g:html_indent_script1 = "auto"
+let g:html_indent_inctags = "html,body,head,tbody,p"
+autocmd Filetype html,htmldjango,less,css,scss,javascript setlocal ts=2 sts=2 sw=2 colorcolumn=80 smarttab copyindent
 
 
 " vim-less
@@ -220,8 +232,8 @@ let NERDSpaceDelims=1
 
 
 " Indent-guides
-hi IndentGuidesOdd  ctermbg=gray
-hi IndentGuidesEven ctermbg=darkgrey
+hi IndentGuidesOdd  ctermbg=darkgray
+hi IndentGuidesEven ctermbg=grey
 
 let g:indent_guides_enable_on_vim_startup = 1
 let g:indent_guides_indent_levels = 30
