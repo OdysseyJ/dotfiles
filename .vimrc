@@ -10,7 +10,6 @@ Plugin 'gmarik/Vundle.vim'
 Plugin 'The-NERD-tree'
 Plugin 'Tagbar'
 Plugin 'ctrlp.vim'
-Plugin 'neocomplcache'
 Plugin 'Syntastic'
 Plugin 'bling/vim-airline'
 Plugin 'vim-htmldjango_omnicomplete'
@@ -30,6 +29,10 @@ Plugin 'nathanaelkane/vim-indent-guides.git'
 Plugin 'Solarized'
 Plugin 'davidhalter/jedi-vim'
 Plugin 'Valloric/YouCompleteMe'
+Plugin 'sjl/gundo.vim.git'
+Plugin 'hsanson/vim-android'
+Plugin 'artur-shaik/vim-javacomplete2'
+Plugin 'easymotion/vim-easymotion'
 
 call vundle#end()
 filetype plugin indent on	" required!
@@ -94,10 +97,10 @@ set splitbelow
 
 
 " set gui setting
-if has('gui_running')
-  set guifont=Monaco:h13
-  set background=dark
-endif
+" if has('gui_running')
+  " set guifont=Monaco:h13
+  " set background=dark
+" endif
 
 
 " trailing whitespace del
@@ -129,7 +132,6 @@ let g:nerdtree_tabs_open_on_gui_startup=0
 
 
 " Tagbar
-nmap <leader>t :TagbarToggle<CR>
 let g:tagbar_width=40
 let g:tagbar_autofocus=1
 let g:tagbar_autoclose=1
@@ -169,9 +171,11 @@ let g:syntastic_auto_loc_list = 1
 let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0
 let g:syntastic_html_checkers = ['']
+" let g:syntastic_html_tidy_blocklevel_tags
 
 
 " ctrlp
+nnoremap <leader>t :CtrlP<CR>
 nnoremap <leader>l :CtrlPLine<CR>
 nnoremap <leader>b :CtrlPBuffer<CR>
 nmap <leader>m :CtrlPMRUFiles<CR>
@@ -181,27 +185,11 @@ let g:ctrlp_max_depth = 40
 let g:ctrlp_use_caching = 1
 let g:ctrlp_custom_ignore = '\.git$\|\.hg$\|\.svn$\|\.yardoc$|\.pyc$\'
 
-
-" neocomplcache
-
-" Recommended key-mappings.
-let g:neocomplcache_enable_at_startup = 0
-" <CR>: close popup and save indent.
-inoremap <silent> <CR> <C-r>=<SID>my_cr_function()<CR>
-function! s:my_cr_function()
-    return neocomplcache#smart_close_popup() . "\<CR>"
-    " For no inserting <CR> key.
-    "return pumvisible() ? neocomplcache#close_popup() : "\<CR>"
-endfunction
-" <TAB>: completion.
-inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
-" Close popup by <Space>.
-"inoremap <expr><Space> pumvisible() ? neocomplcache#close_popup() : "\<Space>"
-autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
-autocmd FileType html setlocal omnifunc=htmlcomplete#CompleteTags
-autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
-autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
-autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
+set wildignore+=*.so,*.swp,*.zip,*.pyc
+set wildignore+=*.o,*.out,*.obj,*.so,*.pyc
+set wildignore+=*.zip,*.tar.gz,*.tar.bz2,*.rar,*.tar.xz
+set wildignore+=*/.sass-cache/*
+set wildignore+=*.swp,*~,._*
 
 
 " indenthtml
@@ -232,11 +220,34 @@ let NERDSpaceDelims=1
 
 
 " Indent-guides
-hi IndentGuidesOdd  ctermbg=darkgray
-hi IndentGuidesEven ctermbg=grey
+" hi IndentGuidesOdd  ctermbg=darkgray
+" hi IndentGuidesEven ctermbg=grey
 
 let g:indent_guides_enable_on_vim_startup = 1
 let g:indent_guides_indent_levels = 30
 let g:indent_guides_start_level = 2
 let g:indent_guides_exclude_filetypes = ['help', 'nerdtree']
+
+
+" vim-android
+
+let g:android_sdk_path = '/Users/YG_Jung/Downloads/android-sdk'
+let g:gradle_path = '/Users/YG_Jung/Downloads/gradle-2.8'
+
+
+" vim-javacomplete2
+
+autocmd FileType java set omnifunc=javacomplete#Complete
+if filereadable("AndroidManifest.xml")
+    let g:JavaComplete_SourcesPath = "target/generated-sources/r"
+endif
+
+
+" easymotion
+
+map  / <Plug>(easymotion-sn)
+omap / <Plug>(easymotion-tn)
+
+map n <Plug>(easymotion-vim-n)
+map N <Plug>(easymotion-vim-N)
 
