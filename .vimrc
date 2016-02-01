@@ -33,18 +33,15 @@ Plugin 'sjl/gundo.vim.git'
 Plugin 'hsanson/vim-android'
 Plugin 'artur-shaik/vim-javacomplete2'
 Plugin 'easymotion/vim-easymotion'
+Plugin 'airblade/vim-gitgutter'
+Plugin 'vim-scripts/matchit.zip'
+Plugin 'rking/ag.vim'
+
 
 call vundle#end()
 filetype plugin indent on	" required!
 " call pathogen#infect()
 execute pathogen#infect()
-"
-" Brief help
-" :BundleList           - list configured bundles
-" :BundleInstall(!)     - install(update) bundles
-" :BundleSearch(!) foo  - search(or refresh cache first) for foo
-" :BundleClean(!)       - confirm(or auto-approve) removal of unused bundles"
-
 
 " ColorSchemes
 let g:solarized_termcolors=256
@@ -96,13 +93,6 @@ set splitright
 set splitbelow
 
 
-" set gui setting
-" if has('gui_running')
-  " set guifont=Monaco:h13
-  " set background=dark
-" endif
-
-
 " trailing whitespace del
 nnoremap <leader>zz :%s/\s\+$//e<CR>
 
@@ -121,12 +111,11 @@ noremap <C-m> :bn<CR>
 
 " The-NERD-tree
 nmap <leader>nt :NERDTreeFind<CR>
-let NERDTreeChDirMode=2
 let NERDTreeQuitOnOpen=1
 let NERDTreeMouseMode=2
-let NERDTreeShowHidden=1
 let NERDTreeHighlightCursorline=1
 let NERDTreeKeepTreeInNewTab=1
+let NERDTreeIgnore=['\.pyc', '\~$', '\.swo$', '\.swp$', '\.git', '\.hg', '\.svn', '\.bzr']
 let NERDTreeWinSize=60
 let g:nerdtree_tabs_open_on_gui_startup=0
 
@@ -171,7 +160,6 @@ let g:syntastic_auto_loc_list = 1
 let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0
 let g:syntastic_html_checkers = ['']
-" let g:syntastic_html_tidy_blocklevel_tags
 
 
 " ctrlp
@@ -214,40 +202,63 @@ augroup END
 :match VendorPrefix /-\(moz\|webkit\|o\|ms\)-[a-zA-Z-]\+/
 
 
+" Fugitive
+nnoremap <leader>gc :Git checkout 
+nnoremap <leader>gm :Git merge 
+nnoremap <leader>gb :Git branch 
+nnoremap <leader>gg :git 
+nnoremap <leader>gs :Gstatus<CR>
+nnoremap <leader>gd :Gdiff<CR>
+nnoremap <silent> <leader>gl :Git pull<CR>
+nnoremap <silent> <leader>gp :Git push<CR>
+nnoremap <silent> <leader>gw :Gwrite<CR>
+nnoremap <silent> <leader>gr :Gread<CR>
+
+
 " The-NERD-Commenter
 filetype plugin on
 let NERDSpaceDelims=1
 
 
 " Indent-guides
-" hi IndentGuidesOdd  ctermbg=darkgray
-" hi IndentGuidesEven ctermbg=grey
-
-let g:indent_guides_enable_on_vim_startup = 1
-let g:indent_guides_indent_levels = 30
+let g:indent_guides_auto_colors = 0
+let g:indent_guides_guide_size = 1
 let g:indent_guides_start_level = 2
+autocmd vimenter,colorscheme * :hi indentguidesodd ctermfg=none ctermbg=235
+autocmd vimenter,colorscheme * :hi indentguideseven ctermfg=none ctermbg=235
+autocmd filetype python,html,htmldjango,htmljinja :IndentGuidesEnable
 let g:indent_guides_exclude_filetypes = ['help', 'nerdtree']
 
 
 " vim-android
-
 let g:android_sdk_path = '/Users/YG_Jung/Downloads/android-sdk'
 let g:gradle_path = '/Users/YG_Jung/Downloads/gradle-2.8'
 
 
 " vim-javacomplete2
-
 autocmd FileType java set omnifunc=javacomplete#Complete
 if filereadable("AndroidManifest.xml")
     let g:JavaComplete_SourcesPath = "target/generated-sources/r"
 endif
 
 
+" Jedi-vim
+let g:jedi#documentation_command = "K"
+
+
 " easymotion
+let g:EasyMotion_do_mapping = 0
+let g:EasyMotion_smartcase = 1
 
-map  / <Plug>(easymotion-sn)
-omap / <Plug>(easymotion-tn)
 
-map n <Plug>(easymotion-vim-n)
-map N <Plug>(easymotion-vim-N)
+" Gundo
+nmap <leader>u :GundoToggle<CR>
 
+
+" Gitgutter
+let g:gitgutter_max_signs=5000
+
+
+" Ag
+nnoremap <leader>aa :Ag
+nnoremap <leader>as :Ag <cword><CR>
