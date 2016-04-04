@@ -36,6 +36,8 @@ Plugin 'easymotion/vim-easymotion'
 Plugin 'airblade/vim-gitgutter'
 Plugin 'vim-scripts/matchit.zip'
 Plugin 'rking/ag.vim'
+Plugin 'Shougo/vimproc.vim'
+Plugin 'Quramy/tsuquyomi'
 
 
 call vundle#end()
@@ -50,6 +52,7 @@ let g:solarized_contrast="high"
 let g:solarized_termtrans=1
 
 syntax enable
+
 set background=dark
 colorscheme solarized
 
@@ -99,14 +102,26 @@ nnoremap <leader>zz :%s/\s\+$//e<CR>
 " Change the mapleader from \ to ,
 let mapleader=","
 
-" window moving key
-noremap <C-J>       <C-W>j
-noremap <C-K>       <C-W>k
-noremap <C-H>       <C-W>h
-noremap <C-L>       <C-W>l
-"buffer moving key
+inoremap <C-c> <Esc>
+inoremap <Left> <nop>
+inoremap <Down> <nop>
+inoremap <Up> <nop>
+inoremap <Right> <nop>
+
+noremap <C-J>   <C-W>j
+noremap <C-K>   <C-W>k
+noremap <C-H>   <C-W>h
+noremap <C-L>   <C-W>l
+
 noremap <C-n> :bp<CR>
 noremap <C-m> :bn<CR>
+
+nnoremap td :tabclose<CR>
+nnoremap tn :tabnew<CR>
+nnoremap th :tabprev<CR>
+nnoremap tj :tabfirst<CR>
+nnoremap tk :tablast<CR>
+nnoremap tl :tabnext<CR>
 
 
 " The-NERD-tree
@@ -260,5 +275,6 @@ let g:gitgutter_max_signs=5000
 
 
 " Ag
-nnoremap <leader>aa :Ag
+let g:ag_working_path_mode="r"
+nnoremap <leader>aa :Ag 
 nnoremap <leader>as :Ag <cword><CR>
