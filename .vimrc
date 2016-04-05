@@ -11,7 +11,8 @@ Plugin 'The-NERD-tree'
 Plugin 'Tagbar'
 Plugin 'ctrlp.vim'
 Plugin 'Syntastic'
-Plugin 'bling/vim-airline'
+Plugin 'vim-airline/vim-airline'
+Plugin 'vim-airline/vim-airline-themes'
 Plugin 'vim-htmldjango_omnicomplete'
 Plugin 'jQuery'
 Plugin 'indentpython.vim'
@@ -144,9 +145,9 @@ let g:tagbar_systemenc = 'utf-8'
 
 
 " Airline
-let g:airline_theme             = 'solarized'
-" let g:airline#extensions#syntastic#enabled = 1
+let g:airline_theme             = 'base16_solarized'
 let g:airline#extensions#branch#enabled = 1
+" let g:airline#extensions#syntastic#enabled = 1
 
 let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tabline#show_buffers = 1
