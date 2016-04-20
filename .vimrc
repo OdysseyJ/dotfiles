@@ -39,6 +39,9 @@ Plugin 'vim-scripts/matchit.zip'
 Plugin 'rking/ag.vim'
 Plugin 'Shougo/vimproc.vim'
 Plugin 'Quramy/tsuquyomi'
+Plugin 'godlygeek/tabular'
+Plugin 'mxw/vim-jsx'
+Plugin 'pangloss/vim-javascript'
 
 
 call vundle#end()
@@ -127,32 +130,32 @@ nnoremap tl :tabnext<CR>
 
 " The-NERD-tree
 nmap <leader>nt :NERDTreeFind<CR>
-let NERDTreeQuitOnOpen=1
-let NERDTreeMouseMode=2
-let NERDTreeHighlightCursorline=1
-let NERDTreeKeepTreeInNewTab=1
-let NERDTreeIgnore=['\.pyc', '\~$', '\.swo$', '\.swp$', '\.git', '\.hg', '\.svn', '\.bzr']
-let NERDTreeWinSize=60
-let g:nerdtree_tabs_open_on_gui_startup=0
+let NERDTreeQuitOnOpen                  = 1
+let NERDTreeMouseMode                   = 2
+let NERDTreeHighlightCursorline         = 1
+let NERDTreeKeepTreeInNewTab            = 1
+let NERDTreeIgnore                      = ['\.pyc', '\~$', '\.swo$', '\.swp$', '\.git', '\.hg', '\.svn', '\.bzr']
+let NERDTreeWinSize                     = 60
+let g:nerdtree_tabs_open_on_gui_startup = 0
 
 
 " Tagbar
-let g:tagbar_width=40
-let g:tagbar_autofocus=1
-let g:tagbar_autoclose=1
+let g:tagbar_width     = 40
+let g:tagbar_autofocus = 1
+let g:tagbar_autoclose = 1
 let g:tagbar_iconchars = ['▸', '▾']
 let g:tagbar_systemenc = 'utf-8'
 
 
 " Airline
-let g:airline_theme             = 'base16_solarized'
-let g:airline#extensions#branch#enabled = 1
-" let g:airline#extensions#syntastic#enabled = 1
+let g:airline_theme                              = 'base16_solarized'
+let g:airline#extensions#branch#enabled          = 1
+let g:airline#extensions#syntastic#enabled       = 1
 
-let g:airline#extensions#tabline#enabled = 1
-let g:airline#extensions#tabline#show_buffers = 1
-let g:airline#extensions#tabline#left_sep = ' '
-let g:airline#extensions#tabline#left_alt_sep = ' | '
+let g:airline#extensions#tabline#enabled         = 1
+let g:airline#extensions#tabline#show_buffers    = 1
+let g:airline#extensions#tabline#left_sep        = ' '
+let g:airline#extensions#tabline#left_alt_sep    = ' | '
 
 let g:airline#extensions#tabline#buffer_idx_mode = 1
 nmap <leader>1 <Plug>AirlineSelectTab1
@@ -172,10 +175,10 @@ set statusline+=%{SyntasticStatuslineFlag()}
 set statusline+=%*
 
 let g:syntastic_always_populate_loc_list = 1
-let g:syntastic_auto_loc_list = 1
-let g:syntastic_check_on_open = 1
-let g:syntastic_check_on_wq = 0
-let g:syntastic_html_checkers = ['']
+let g:syntastic_auto_loc_list            = 0
+let g:syntastic_check_on_open            = 1
+let g:syntastic_check_on_wq              = 0
+let g:syntastic_html_checkers            = ['html']
 
 
 " ctrlp
@@ -184,9 +187,9 @@ nnoremap <leader>l :CtrlPLine<CR>
 nnoremap <leader>b :CtrlPBuffer<CR>
 nmap <leader>m :CtrlPMRUFiles<CR>
 let g:ctrlp_open_new_file = 'v'
-let g:ctrlp_by_filename=1
-let g:ctrlp_max_depth = 40
-let g:ctrlp_use_caching = 1
+let g:ctrlp_by_filename   = 1
+let g:ctrlp_max_depth     = 40
+let g:ctrlp_use_caching   = 1
 let g:ctrlp_custom_ignore = '\.git$\|\.hg$\|\.svn$\|\.yardoc$|\.pyc$\'
 
 set wildignore+=*.so,*.swp,*.zip,*.pyc
@@ -238,17 +241,17 @@ let NERDSpaceDelims=1
 
 " Indent-guides
 let g:indent_guides_auto_colors = 0
-let g:indent_guides_guide_size = 1
+let g:indent_guides_guide_size  = 1
 let g:indent_guides_start_level = 2
 autocmd vimenter,colorscheme * :hi indentguidesodd ctermfg=none ctermbg=235
 autocmd vimenter,colorscheme * :hi indentguideseven ctermfg=none ctermbg=235
-autocmd filetype python,html,htmldjango,htmljinja :IndentGuidesEnable
+autocmd filetype python,html,htmldjango,htmljinja,javascript :IndentGuidesEnable
 let g:indent_guides_exclude_filetypes = ['help', 'nerdtree']
 
 
 " vim-android
 let g:android_sdk_path = '/Users/YG_Jung/Downloads/android-sdk'
-let g:gradle_path = '/Users/YG_Jung/Downloads/gradle-2.8'
+let g:gradle_path      = '/Users/YG_Jung/Downloads/gradle-2.8'
 
 
 " vim-javacomplete2
@@ -264,7 +267,7 @@ let g:jedi#documentation_command = "K"
 
 " easymotion
 let g:EasyMotion_do_mapping = 0
-let g:EasyMotion_smartcase = 1
+let g:EasyMotion_smartcase  = 1
 
 
 " Gundo
@@ -279,3 +282,20 @@ let g:gitgutter_max_signs=5000
 let g:ag_working_path_mode="r"
 nnoremap <leader>aa :Ag 
 nnoremap <leader>as :Ag <cword><CR>
+
+
+" Tabular
+nmap <Leader>f= :Tabularize /=<CR>
+vmap <Leader>f= :Tabularize /=<CR>
+nmap <Leader>f: :Tabularize /:<CR>
+vmap <Leader>f: :Tabularize /:<CR>
+nmap <Leader>f:: :Tabularize /:\zs<CR>
+vmap <Leader>f:: :Tabularize /:\zs<CR>
+nmap <Leader>f, :Tabularize /,<CR>
+vmap <Leader>f, :Tabularize /,<CR>
+nmap <Leader>f<Bar> :Tabularize /<Bar><CR>
+vmap <Leader>f<Bar> :Tabularize /<Bar><CR>
+
+
+" vim-jsx
+let g:jsx_ext_required = 0
