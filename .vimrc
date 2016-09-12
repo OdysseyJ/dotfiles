@@ -7,9 +7,8 @@ call vundle#begin()
 " required!-
 " My Bundles here:
 Plugin 'gmarik/Vundle.vim'
-Plugin 'The-NERD-tree'
-Plugin 'Tagbar'
-Plugin 'ctrlp.vim'
+Plugin 'scrooloose/nerdtree'
+Plugin 'kien/ctrlp.vim'
 Plugin 'Syntastic'
 Plugin 'vim-airline/vim-airline'
 Plugin 'vim-airline/vim-airline-themes'
@@ -23,9 +22,9 @@ Plugin 'pathogen.vim'
 Plugin 'sudo.vim'
 Plugin 'groenewege/vim-less'
 Plugin 'rstacruz/sparkup'
-Plugin 'The-NERD-Commenter'
+Plugin 'scrooloose/nerdcommenter'
 Plugin 'burnettk/vim-angular'
-Plugin 'fugitive.vim'
+Plugin 'tpope/vim-fugitive'
 Plugin 'nathanaelkane/vim-indent-guides.git'
 Plugin 'Solarized'
 Plugin 'davidhalter/jedi-vim'
@@ -42,6 +41,7 @@ Plugin 'Quramy/tsuquyomi'
 Plugin 'godlygeek/tabular'
 Plugin 'mxw/vim-jsx'
 Plugin 'pangloss/vim-javascript'
+Plugin 'Raimondi/delimitMate'
 
 
 call vundle#end()
@@ -54,6 +54,9 @@ let g:solarized_termcolors=256
 let g:solarized_bold=1
 let g:solarized_contrast="high"
 let g:solarized_termtrans=1
+
+" Change the mapleader from \ to ,
+let mapleader=","
 
 syntax enable
 
@@ -85,6 +88,7 @@ set wildmenu
 set wildmode=list:longest
 set visualbell
 set number
+set pastetoggle=<leader>p
 set relativenumber
 set undofile
 set undodir=$HOME/.vim/undo
@@ -102,9 +106,6 @@ set splitbelow
 
 " trailing whitespace del
 nnoremap <leader>zz :%s/\s\+$//e<CR>
-
-" Change the mapleader from \ to ,
-let mapleader=","
 
 inoremap <C-c> <Esc>
 inoremap <Left> <nop>
@@ -129,22 +130,17 @@ nnoremap tl :tabnext<CR>
 
 
 " The-NERD-tree
+
+let g:nerdtree_tabs_open_on_gui_startup=0
+let NERDTreeShowBookmarks=1
+let NERDTreeIgnore=['\.pyc', '\~$', '\.swo$', '\.swp$', '\.git', '\.hg', '\.svn', '\.bzr']
+let NERDTreeChDirMode=0
+let NERDTreeQuitOnOpen=0
+let NERDTreeMouseMode=2
+let NERDTreeShowHidden=1
+let NERDTreeKeepTreeInNewTab=1
 nmap <leader>nt :NERDTreeFind<CR>
-let NERDTreeQuitOnOpen                  = 1
-let NERDTreeMouseMode                   = 2
-let NERDTreeHighlightCursorline         = 1
-let NERDTreeKeepTreeInNewTab            = 1
-let NERDTreeIgnore                      = ['\.pyc', '\~$', '\.swo$', '\.swp$', '\.git', '\.hg', '\.svn', '\.bzr']
-let NERDTreeWinSize                     = 60
-let g:nerdtree_tabs_open_on_gui_startup = 0
-
-
-" Tagbar
-let g:tagbar_width     = 40
-let g:tagbar_autofocus = 1
-let g:tagbar_autoclose = 1
-let g:tagbar_iconchars = ['▸', '▾']
-let g:tagbar_systemenc = 'utf-8'
+nmap <leader>nn :NERDTreeToggle<CR>
 
 
 " Airline
