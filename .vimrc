@@ -49,6 +49,9 @@ filetype plugin indent on	" required!
 " call pathogen#infect()
 execute pathogen#infect()
 
+" For mac crontab
+autocmd filetype crontab setlocal nobackup nowritebackup
+
 " ColorSchemes
 let g:solarized_termcolors=256
 let g:solarized_bold=1
