@@ -6,6 +6,10 @@
     ui = true
     pager = true
 
+[remote "origin"]
+    fetch = +refs/heads/*:refs/remotes/origin/*
+    +url = git@github.com:scubedoo187/dotfiles.git
+
 [color "status"]
     added = green
     changed = red bold
@@ -28,8 +32,8 @@
     df = difftool
 
 [user]
-    email = sublime718@hotmail.com
-    name = JungYG
+    email = scubedoo187@gmail.com
+    name = YGJung
 
 [diff]
     tool = meld
