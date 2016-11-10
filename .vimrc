@@ -5,7 +5,8 @@ set rtp +=~/.vim/bundle/Vundle.vim/
 call vundle#begin()
 " let Vundle manage Vundle
 " required!-
-" My Bundles here:
+
+" Plugin list
 Plugin 'gmarik/Vundle.vim'
 Plugin 'scrooloose/nerdtree'
 Plugin 'kien/ctrlp.vim'
@@ -14,6 +15,7 @@ Plugin 'vim-airline/vim-airline'
 Plugin 'vim-airline/vim-airline-themes'
 Plugin 'vim-htmldjango_omnicomplete'
 Plugin 'jQuery'
+Plugin 'klen/python-mode'
 Plugin 'indentpython.vim'
 Plugin 'indenthtml.vim'
 Plugin 'surround.vim'
@@ -35,6 +37,7 @@ Plugin 'artur-shaik/vim-javacomplete2'
 Plugin 'easymotion/vim-easymotion'
 Plugin 'airblade/vim-gitgutter'
 Plugin 'vim-scripts/matchit.zip'
+Plugin 'ap/vim-css-color'
 Plugin 'rking/ag.vim'
 Plugin 'Shougo/vimproc.vim'
 Plugin 'Quramy/tsuquyomi'
@@ -42,6 +45,7 @@ Plugin 'godlygeek/tabular'
 Plugin 'mxw/vim-jsx'
 Plugin 'pangloss/vim-javascript'
 Plugin 'Raimondi/delimitMate'
+Plugin 'leafgarland/typescript-vim'
 
 
 call vundle#end()
@@ -49,16 +53,21 @@ filetype plugin indent on	" required!
 " call pathogen#infect()
 execute pathogen#infect()
 
+" ===============
 " For mac crontab
+" ===============
 autocmd filetype crontab setlocal nobackup nowritebackup
 
+
+" ============
 " ColorSchemes
+" ============
 let g:solarized_termcolors=256
 let g:solarized_bold=1
 let g:solarized_contrast="high"
 let g:solarized_termtrans=1
 
-" Change the mapleader from \ to ,
+" Change the <leader> from \ to ,
 let mapleader=","
 
 syntax enable
@@ -132,7 +141,9 @@ nnoremap tk :tablast<CR>
 nnoremap tl :tabnext<CR>
 
 
+" =============
 " The-NERD-tree
+" =============
 
 let g:nerdtree_tabs_open_on_gui_startup=0
 let NERDTreeShowBookmarks=1
@@ -146,7 +157,9 @@ nmap <leader>nt :NERDTreeFind<CR>
 nmap <leader>nn :NERDTreeToggle<CR>
 
 
+" =======
 " Airline
+" =======
 let g:airline_theme                              = 'base16_solarized'
 let g:airline#extensions#branch#enabled          = 1
 let g:airline#extensions#syntastic#enabled       = 1
@@ -168,7 +181,9 @@ nmap <leader>8 <Plug>AirlineSelectTab8
 nmap <leader>9 <Plug>AirlineSelectTab9
 
 
+" =========
 " Syntastic
+" =========
 set statusline+=%#warningmsg#
 set statusline+=%{SyntasticStatuslineFlag()}
 set statusline+=%*
@@ -180,7 +195,9 @@ let g:syntastic_check_on_wq              = 0
 let g:syntastic_html_checkers            = ['html']
 
 
+" =====
 " ctrlp
+" =====
 nnoremap <leader>t :CtrlP<CR>
 nnoremap <leader>l :CtrlPLine<CR>
 nnoremap <leader>b :CtrlPBuffer<CR>
@@ -198,18 +215,35 @@ set wildignore+=*/.sass-cache/*
 set wildignore+=*.swp,*~,._*
 
 
+" ===========
+" Python mode
+" ===========
+let g:pymode_breakpoint_bind = '<leader>pb'
+let g:pymode_folding = 0
+let g:pymode_lint_checkers = ['pyflakes', 'pep8']
+let g:pymode_lint_ignore = "W0401"
+let g:pymode_lint_unmodified = 1
+let g:pymode_options = 0
+let g:pymode_rope = 0
+let g:pymode_run_bind = '<leader>pr'
+
+" ==========
 " indenthtml
+" ==========
 let g:html_indent_script1 = "inc"
 let g:html_indent_script1 = "auto"
 let g:html_indent_inctags = "html,body,head,tbody,p"
-autocmd Filetype html,htmldjango,less,css,scss,javascript setlocal ts=2 sts=2 sw=2 colorcolumn=80 smarttab copyindent
+autocmd Filetype html,htmldjango,less,css,scss,javascript,typescript setlocal ts=2 sts=2 sw=2 colorcolumn=80 smarttab copyindent
 
-
+" ========
 " vim-less
+" ========
 autocmd BufRead, BufNewFile *.less set filetype css
-" nnoremap <Leader>m :w <BAR> !lessc % > %:t:r.css<CR><space>
 
+
+" ===============
 " vim-css3-syntax
+" ===============
 augroup VimCSS3Syntax
     autocmd!
 
@@ -220,7 +254,9 @@ augroup END
 :match VendorPrefix /-\(moz\|webkit\|o\|ms\)-[a-zA-Z-]\+/
 
 
+" ========
 " Fugitive
+" ========
 nnoremap <leader>gc :Git checkout 
 nnoremap <leader>gm :Git merge 
 nnoremap <leader>gb :Git branch 
@@ -233,57 +269,76 @@ nnoremap <silent> <leader>gw :Gwrite<CR>
 nnoremap <silent> <leader>gr :Gread<CR>
 
 
+" ==================
 " The-NERD-Commenter
+" ==================
 filetype plugin on
 let NERDSpaceDelims=1
 
 
+" =============
 " Indent-guides
+" =============
 let g:indent_guides_auto_colors = 0
 let g:indent_guides_guide_size  = 1
 let g:indent_guides_start_level = 2
 autocmd vimenter,colorscheme * :hi indentguidesodd ctermfg=none ctermbg=235
 autocmd vimenter,colorscheme * :hi indentguideseven ctermfg=none ctermbg=235
-autocmd filetype python,html,htmldjango,htmljinja,javascript :IndentGuidesEnable
+autocmd filetype python,html,htmldjango,htmljinja,javascript,typescript :IndentGuidesEnable
 let g:indent_guides_exclude_filetypes = ['help', 'nerdtree']
 
 
+" ===========
 " vim-android
+" ===========
 let g:android_sdk_path = '/Users/YG_Jung/Downloads/android-sdk'
 let g:gradle_path      = '/Users/YG_Jung/Downloads/gradle-2.8'
 
 
+" =================
 " vim-javacomplete2
+" =================
 autocmd FileType java set omnifunc=javacomplete#Complete
 if filereadable("AndroidManifest.xml")
     let g:JavaComplete_SourcesPath = "target/generated-sources/r"
 endif
 
 
+" ========
 " Jedi-vim
+" ========
 let g:jedi#documentation_command = "K"
 
-
+" ==========
 " easymotion
+" ==========
 let g:EasyMotion_do_mapping = 0
 let g:EasyMotion_smartcase  = 1
 
 
+" =====
 " Gundo
+" =====
 nmap <leader>u :GundoToggle<CR>
 
 
+" =========
 " Gitgutter
+" =========
 let g:gitgutter_max_signs=5000
 
 
+" ==
 " Ag
+" ==
 let g:ag_working_path_mode="r"
 nnoremap <leader>aa :Ag 
 nnoremap <leader>as :Ag <cword><CR>
 
 
+" =======
 " Tabular
+" =======
 nmap <Leader>f= :Tabularize /=<CR>
 vmap <Leader>f= :Tabularize /=<CR>
 nmap <Leader>f: :Tabularize /:<CR>
@@ -296,5 +351,17 @@ nmap <Leader>f<Bar> :Tabularize /<Bar><CR>
 vmap <Leader>f<Bar> :Tabularize /<Bar><CR>
 
 
+" =======
 " vim-jsx
+" =======
 let g:jsx_ext_required = 0
+
+
+" ==============
+" Typescript-vim
+" ==============
+let g:typescript_compiler_binary = 'tsc'
+let g:typescript_compiler_options = ''
+
+let g:tsuquyomi_disable_quickfix = 1
+let g:syntastic_typescript_checkers = ['tsuquyomi']
