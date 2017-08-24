@@ -1,120 +1,65 @@
-set nocompatible                "ViImproved
+" Basic Configuration
+set nocompatible
 filetype off
-
-set rtp +=~/.vim/bundle/Vundle.vim/
-call vundle#begin()
-" let Vundle manage Vundle
-" required!-
-
-" Plugin list
-Plugin 'gmarik/Vundle.vim'
-Plugin 'scrooloose/nerdtree'
-Plugin 'kien/ctrlp.vim'
-Plugin 'Syntastic'
-Plugin 'vim-airline/vim-airline'
-Plugin 'vim-airline/vim-airline-themes'
-Plugin 'vim-htmldjango_omnicomplete'
-Plugin 'jQuery'
-Plugin 'klen/python-mode'
-Plugin 'indentpython.vim'
-Plugin 'indenthtml.vim'
-Plugin 'surround.vim'
-Plugin 'repeat.vim'
-Plugin 'pathogen.vim'
-Plugin 'sudo.vim'
-Plugin 'groenewege/vim-less'
-Plugin 'rstacruz/sparkup'
-Plugin 'scrooloose/nerdcommenter'
-Plugin 'burnettk/vim-angular'
-Plugin 'tpope/vim-fugitive'
-Plugin 'nathanaelkane/vim-indent-guides.git'
-Plugin 'Solarized'
-Plugin 'davidhalter/jedi-vim'
-Plugin 'Valloric/YouCompleteMe'
-Plugin 'sjl/gundo.vim.git'
-Plugin 'hsanson/vim-android'
-Plugin 'artur-shaik/vim-javacomplete2'
-Plugin 'easymotion/vim-easymotion'
-Plugin 'airblade/vim-gitgutter'
-Plugin 'vim-scripts/matchit.zip'
-Plugin 'ap/vim-css-color'
-Plugin 'rking/ag.vim'
-Plugin 'Shougo/vimproc.vim'
-Plugin 'Quramy/tsuquyomi'
-Plugin 'godlygeek/tabular'
-Plugin 'mxw/vim-jsx'
-Plugin 'pangloss/vim-javascript'
-Plugin 'Raimondi/delimitMate'
-Plugin 'leafgarland/typescript-vim'
-
-
-call vundle#end()
-filetype plugin indent on	" required!
-" call pathogen#infect()
-execute pathogen#infect()
-
-" ===============
-" For mac crontab
-" ===============
-autocmd filetype crontab setlocal nobackup nowritebackup
-
-
-" ============
-" ColorSchemes
-" ============
-let g:solarized_termcolors=256
-let g:solarized_bold=1
-let g:solarized_contrast="high"
-let g:solarized_termtrans=1
-
-" Change the <leader> from \ to ,
-let mapleader=","
 
 syntax enable
 
-set background=dark
-colorscheme solarized
+let mapleader=","
 
-set ruler
-set expandtab
-set tabstop=4
-set shiftwidth=4
-set softtabstop=4
-set backspace=indent,eol,start
 set autoindent
+set backspace=indent,eol,start
+set backupdir=~/.tmp/vim/backup/
+set colorcolumn=80
 set copyindent
-set showmatch
-set smarttab
-set incsearch
-set title
+set cursorline
+set directory=~/.tmp/vim/swap/
+set encoding=utf-8
+set expandtab
+set formatoptions=cqnr1
+set gdefault
+set hidden
+set history=1000
 set hlsearch
-set history=1500
+set ignorecase
+set incsearch
+set laststatus=2
 set list
 set listchars=tab:>-,trail:-,extends:#
-set wrap
-set pastetoggle=<leader>p
-set encoding=utf-8
-set showcmd
-set hidden
-set wildmenu
-set wildmode=list:longest
-set visualbell
+set nojoinspaces
 set number
 set pastetoggle=<leader>p
 set relativenumber
-set undofile
-set undodir=$HOME/.vim/undo
-set undolevels=1500
-set ignorecase
+set ruler
+set scrolloff=1
+set shiftwidth=4
+set showcmd
+set showmatch
 set smartcase
-set gdefault
-set colorcolumn=80
-set cursorline
-set nojoinspaces
-set noswapfile
-set splitright
+set smarttab
+set softtabstop=4
 set splitbelow
-
+set splitright
+set statusline+=%=%-14.(%l,%c%V%)\ %p%%  " Right aligned file nav info
+set statusline+=%w%h%m%r                 " Options
+set statusline+=%{fugitive#statusline()} " Git Hotness
+set statusline+=\ [%{&ff}/%Y]            " Filetype
+set statusline+=\ [%{getcwd()}]          " Current dir
+set statusline=%<%f\                     " Filename
+set tabstop=4
+set textwidth=79
+set title
+set undodir=~/.tmp/vim/undo/
+set undofile
+set undolevels=1000
+set visualbell
+set wildignore+=*.o,*.out,*.obj,*.so,*.pyc
+set wildignore+=*.so,*.swp,*.zip,*.pyc
+set wildignore+=*.swp,*~,._*
+set wildignore+=*.zip,*.tar.gz,*.tar.bz2,*.rar,*.tar.xz
+set wildignore+=*/.sass-cache/*
+set wildmenu
+set wildmode=list:longest
+set wrap
 
 " trailing whitespace del
 nnoremap <leader>zz :%s/\s\+$//e<CR>
@@ -140,6 +85,90 @@ nnoremap tj :tabfirst<CR>
 nnoremap tk :tablast<CR>
 nnoremap tl :tabnext<CR>
 
+set wildignore+=*.so,*.swp,*.zip,*.pyc
+set wildignore+=*.o,*.out,*.obj,*.so,*.pyc
+set wildignore+=*.zip,*.tar.gz,*.tar.bz2,*.rar,*.tar.xz
+set wildignore+=*/.sass-cache/*
+set wildignore+=*.swp,*~,._*
+
+autocmd bufnewfile,bufread *.go set filetype=go
+autocmd bufnewfile,bufread *.html set filetype=htmldjango
+autocmd bufnewfile,bufread *.jinja set filetype=htmldjango
+autocmd bufnewfile,bufread *.json set filetype=javascript
+autocmd filetype html,htmldjango,htmljinja,jinja,less,css,scss,javascript,typescript
+            \ setlocal ts=2 sts=2 sw=2 colorcolumn=80 smarttab copyindent
+
+" Plugins
+filetype off
+set rtp +=~/.vim/bundle/Vundle.vim/
+call vundle#begin()
+
+Plugin 'gmarik/Vundle.vim'
+
+" Plugin list
+Plugin 'kien/ctrlp.vim'
+Plugin 'scrooloose/nerdtree'
+Plugin 'scrooloose/nerdcommenter'
+Plugin 'Syntastic'
+Plugin 'vim-airline/vim-airline'
+Plugin 'vim-airline/vim-airline-themes'
+Plugin 'vim-htmldjango_omnicomplete'
+Plugin 'jQuery'
+Plugin 'klen/python-mode'
+Plugin 'indentpython.vim'
+Plugin 'indenthtml.vim'
+Plugin 'surround.vim'
+Plugin 'repeat.vim'
+Plugin 'pathogen.vim'
+Plugin 'sudo.vim'
+Plugin 'groenewege/vim-less'
+Plugin 'rstacruz/sparkup'
+Plugin 'burnettk/vim-angular'
+Plugin 'tpope/vim-fugitive'
+Plugin 'nathanaelkane/vim-indent-guides.git'
+Plugin 'Solarized'
+Plugin 'davidhalter/jedi-vim'
+Plugin 'Valloric/YouCompleteMe'
+Plugin 'sjl/gundo.vim.git'
+Plugin 'hsanson/vim-android'
+Plugin 'SirVer/ultisnips'
+Plugin 'honza/vim-snippets'
+Plugin 'artur-shaik/vim-javacomplete2'
+Plugin 'easymotion/vim-easymotion'
+Plugin 'airblade/vim-gitgutter'
+Plugin 'vim-scripts/matchit.zip'
+Plugin 'ap/vim-css-color'
+Plugin 'rking/ag.vim'
+Plugin 'Shougo/vimproc.vim'
+Plugin 'Quramy/tsuquyomi'
+Plugin 'godlygeek/tabular'
+Plugin 'mxw/vim-jsx'
+Plugin 'pangloss/vim-javascript'
+Plugin 'mitsuhiko/vim-jinja'
+Plugin 'Raimondi/delimitMate'
+Plugin 'leafgarland/typescript-vim'
+
+call vundle#end()
+filetype plugin indent on
+
+" call pathogen#infect()
+execute pathogen#infect()
+
+" ===============
+" For mac crontab
+" ===============
+autocmd filetype crontab setlocal nobackup nowritebackup
+
+" ============
+" ColorSchemes
+" ============
+let g:solarized_termcolors=256
+let g:solarized_bold=1
+let g:solarized_contrast="high"
+let g:solarized_termtrans=1
+
+set background=dark
+colorscheme solarized
 
 " =============
 " The-NERD-tree
@@ -155,7 +184,6 @@ let NERDTreeShowHidden=1
 let NERDTreeKeepTreeInNewTab=1
 nmap <leader>nt :NERDTreeFind<CR>
 nmap <leader>nn :NERDTreeToggle<CR>
-
 
 " =======
 " Airline
@@ -180,7 +208,6 @@ nmap <leader>7 <Plug>AirlineSelectTab7
 nmap <leader>8 <Plug>AirlineSelectTab8
 nmap <leader>9 <Plug>AirlineSelectTab9
 
-
 " =========
 " Syntastic
 " =========
@@ -194,7 +221,6 @@ let g:syntastic_check_on_open            = 1
 let g:syntastic_check_on_wq              = 0
 let g:syntastic_html_checkers            = ['html']
 
-
 " =====
 " ctrlp
 " =====
@@ -207,13 +233,6 @@ let g:ctrlp_by_filename   = 1
 let g:ctrlp_max_depth     = 40
 let g:ctrlp_use_caching   = 1
 let g:ctrlp_custom_ignore = '\.git$\|\.hg$\|\.svn$\|\.yardoc$|\.pyc$\'
-
-set wildignore+=*.so,*.swp,*.zip,*.pyc
-set wildignore+=*.o,*.out,*.obj,*.so,*.pyc
-set wildignore+=*.zip,*.tar.gz,*.tar.bz2,*.rar,*.tar.xz
-set wildignore+=*/.sass-cache/*
-set wildignore+=*.swp,*~,._*
-
 
 " ===========
 " Python mode
@@ -233,13 +252,11 @@ let g:pymode_run_bind = '<leader>pr'
 let g:html_indent_script1 = "inc"
 let g:html_indent_script1 = "auto"
 let g:html_indent_inctags = "html,body,head,tbody,p"
-autocmd Filetype html,htmldjango,less,css,scss,javascript,typescript setlocal ts=2 sts=2 sw=2 colorcolumn=80 smarttab copyindent
 
 " ========
 " vim-less
 " ========
 autocmd BufRead, BufNewFile *.less set filetype css
-
 
 " ===============
 " vim-css3-syntax
@@ -252,7 +269,6 @@ augroup END
 
 :highlight VendorPrefix guifg=#00ffff gui=bold
 :match VendorPrefix /-\(moz\|webkit\|o\|ms\)-[a-zA-Z-]\+/
-
 
 " ========
 " Fugitive
@@ -268,13 +284,11 @@ nnoremap <silent> <leader>gp :Git push<CR>
 nnoremap <silent> <leader>gw :Gwrite<CR>
 nnoremap <silent> <leader>gr :Gread<CR>
 
-
 " ==================
 " The-NERD-Commenter
 " ==================
 filetype plugin on
 let NERDSpaceDelims=1
-
 
 " =============
 " Indent-guides
@@ -284,16 +298,14 @@ let g:indent_guides_guide_size  = 1
 let g:indent_guides_start_level = 2
 autocmd vimenter,colorscheme * :hi indentguidesodd ctermfg=none ctermbg=235
 autocmd vimenter,colorscheme * :hi indentguideseven ctermfg=none ctermbg=235
-autocmd filetype python,html,htmldjango,htmljinja,javascript,typescript :IndentGuidesEnable
+autocmd filetype python,html,htmldjango,htmljinja,jinja,javascript,typescript :IndentGuidesEnable
 let g:indent_guides_exclude_filetypes = ['help', 'nerdtree']
-
 
 " ===========
 " vim-android
 " ===========
 let g:android_sdk_path = '/Users/YG_Jung/Downloads/android-sdk'
 let g:gradle_path      = '/Users/YG_Jung/Downloads/gradle-2.8'
-
 
 " =================
 " vim-javacomplete2
@@ -303,11 +315,15 @@ if filereadable("AndroidManifest.xml")
     let g:JavaComplete_SourcesPath = "target/generated-sources/r"
 endif
 
-
 " ========
 " Jedi-vim
 " ========
 let g:jedi#documentation_command = "K"
+let g:jedi#goto_assignments_command = "<leader>ja"
+let g:jedi#goto_definitions_command = "<leader>jd"
+let g:jedi#rename_command = "<leader>jr"
+let g:jedi#show_call_signatures = 0
+let g:jedi#usages_command = "<leader>ju"
 
 " ==========
 " easymotion
@@ -315,18 +331,15 @@ let g:jedi#documentation_command = "K"
 let g:EasyMotion_do_mapping = 0
 let g:EasyMotion_smartcase  = 1
 
-
 " =====
 " Gundo
 " =====
 nmap <leader>u :GundoToggle<CR>
 
-
 " =========
 " Gitgutter
 " =========
 let g:gitgutter_max_signs=5000
-
 
 " ==
 " Ag
@@ -334,7 +347,6 @@ let g:gitgutter_max_signs=5000
 let g:ag_working_path_mode="r"
 nnoremap <leader>aa :Ag 
 nnoremap <leader>as :Ag <cword><CR>
-
 
 " =======
 " Tabular
@@ -350,12 +362,10 @@ vmap <Leader>f, :Tabularize /,<CR>
 nmap <Leader>f<Bar> :Tabularize /<Bar><CR>
 vmap <Leader>f<Bar> :Tabularize /<Bar><CR>
 
-
 " =======
 " vim-jsx
 " =======
 let g:jsx_ext_required = 0
-
 
 " ==============
 " Typescript-vim
@@ -365,3 +375,10 @@ let g:typescript_compiler_options = ''
 
 let g:tsuquyomi_disable_quickfix = 1
 let g:syntastic_typescript_checkers = ['tsuquyomi']
+
+" ========
+" Snippets
+" ========
+let g:UltiSnipsExpandTrigger="<leader><tab>"
+let g:UltiSnipsJumpForwardTrigger="<leader>b"
+let g:UltiSnipsJumpBackwardTrigger="<leader>p"
