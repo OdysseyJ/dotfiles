@@ -5,7 +5,7 @@ cd ~
 # Install other packages
 brew install git
 brew install the_silver_searcher
-brew ctags-exuberant
+brew install ctags-exuberant
 
 # Install python packages
 sudo easy_install pip
@@ -20,10 +20,10 @@ else
 fi
 
 # Clone dotfiles repo
-if [ -d ".dotfiles" ]; then
-    cd .dotfiles && git pull origin master && cd ~
+if [ -d "dotfiles" ]; then
+    cd dotfiles && git pull origin master && cd ~
 else
-    git clone https://github.com/scubedoo187/dotfiles.git .dotfiles
+    git clone https://github.com/scubedoo187/dotfiles.git dotfiles
 fi
 
 # Backup old files
@@ -33,9 +33,9 @@ mkdir -p .old_dotfiles
 [ -d ".zshrc" ] && mv .zshrc .old_dotfiles
 
 # Link rc files
-ln -s .dotfiles/vimrc .vimrc
-ln -s .dotfiles/vimrc .vim
-ln -s .dotfiles/vimrc .zshrc
+ln -s dotfiles/vimrc .vimrc
+ln -s dotfiles/vim .vim
+ln -s dotfiles/zshrc .zshrc
 
 # Install Vundle
 if [ -d ".vim/bundle/Vundle.vim" ]; then

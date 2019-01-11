@@ -10,9 +10,11 @@ let mapleader=","
 
 set autoindent
 set backspace=indent,eol,start
+set backupdir=~/.tmp/vim/backup/
 set colorcolumn=80
 set copyindent
 set cursorline
+set directory=~/.tmp/vim/swap/
 set encoding=utf-8
 set expandtab
 set formatoptions=cqnr1
@@ -48,6 +50,7 @@ set statusline=%<%f\                     " Filename
 set tabstop=4
 set textwidth=79
 set title
+set undodir=~/.tmp/vim/undo/
 set undofile
 set undolevels=1000
 set visualbell
