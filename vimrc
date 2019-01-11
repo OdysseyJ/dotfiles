@@ -86,6 +86,9 @@ nnoremap tj :tabfirst<CR>
 nnoremap tk :tablast<CR>
 nnoremap tl :tabnext<CR>
 
+nnoremap H ^
+nnoremap L g_
+
 set wildignore+=*.so,*.swp,*.zip,*.pyc
 set wildignore+=*.o,*.out,*.obj,*.so,*.pyc
 set wildignore+=*.zip,*.tar.gz,*.tar.bz2,*.rar,*.tar.xz
