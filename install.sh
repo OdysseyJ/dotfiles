@@ -20,10 +20,10 @@ else
 fi
 
 # Clone dotfiles repo
-if [ -d "dotfiles" ]; then
-    cd dotfiles && git pull origin master && cd ~
+if [ -d ".dotfiles" ]; then
+    cd .dotfiles && git pull origin master && cd ~
 else
-    git clone https://github.com/scubedoo187/dotfiles.git dotfiles
+    git clone https://github.com/scubedoo187/dotfiles.git .dotfiles
 fi
 
 # Backup old files
@@ -33,9 +33,17 @@ mkdir -p .old_dotfiles
 [ -d ".zshrc" ] && mv .zshrc .old_dotfiles
 
 # Link rc files
-ln -s dotfiles/vimrc .vimrc
-ln -s dotfiles/vim .vim
-ln -s dotfiles/zshrc .zshrc
+ln -s .dotfiles/vimrc .vimrc
+ln -s .dotfiles/vim .vim
+ln -s .dotfiles/zshrc .zshrc
+ln -s .dotfiles/tmux.conf .tmux.conf
+
+# Install tpm
+if [ -d ".tmux/plugins/tpm " ]; then
+    cd .tmux/plugins/tpm && git pull origin master && cd ~
+else
+    git clone https://github.com/tmux-plugins/tpm .tmux/plugins/tpm
+fi
 
 # Install Vundle
 if [ -d ".vim/bundle/Vundle.vim" ]; then
@@ -45,3 +53,4 @@ else
 fi
 
 vim +PluginInstall +qall
+~/.tmux/plugins/tpm/scripts/install_plugins.sh
