@@ -12,6 +12,10 @@ DISABLE_UNTRACKED_FILES_DIRTY="false"
 ZSH_CUSTOM=$HOME/.dotfiles/zsh
 DEFAULT_USER=`whoami`
 
+if [ -n $TMUX ]; then
+    alias vim="TERM=screen-256color vim"
+fi
+
 plugins=(git python virtualenv vi-mode tmux tmuxinator)
 
 source $ZSH/oh-my-zsh.sh
