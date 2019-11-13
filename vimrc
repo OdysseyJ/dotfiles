@@ -41,12 +41,12 @@ set smarttab
 set softtabstop=4
 set splitbelow
 set splitright
+set statusline=%<%f\                     " Filename
 set statusline+=%=%-14.(%l,%c%V%)\ %p%%  " Right aligned file nav info
 set statusline+=%w%h%m%r                 " Options
 set statusline+=%{fugitive#statusline()} " Git Hotness
 set statusline+=\ [%{&ff}/%Y]            " Filetype
 set statusline+=\ [%{getcwd()}]          " Current dir
-set statusline=%<%f\                     " Filename
 set tabstop=4
 set textwidth=79
 set title
@@ -99,7 +99,8 @@ autocmd bufnewfile,bufread *.go set filetype=go
 autocmd bufnewfile,bufread *.html set filetype=htmldjango
 autocmd bufnewfile,bufread *.jinja set filetype=htmldjango
 autocmd bufnewfile,bufread *.json set filetype=javascript
-autocmd filetype html,htmldjango,htmljinja,jinja,jsx,less,css,scss,javascript,typescript,yaml
+autocmd bufnewfile,bufread *.tsx,*jsx set filetype=typescript
+autocmd filetype html,htmldjango,htmljinja,jinja,less,css,scss,javascript,typescript,yaml,xml
             \ setlocal ts=2 sts=2 sw=2 colorcolumn=80 smarttab copyindent
 
 " -------
@@ -124,7 +125,6 @@ Plugin 'rking/ag.vim'
 Plugin 'justinmk/vim-sneak'
 Plugin 'godlygeek/tabular'
 Plugin 'majutsushi/tagbar'
-Plugin 'nathanaelkane/vim-indent-guides'
 Plugin 'sjl/gundo.vim'
 Plugin 'vim-scripts/matchit.zip'
 Plugin 'Raimondi/delimitMate'
@@ -140,11 +140,13 @@ Plugin 'tpope/vim-fugitive'
 Plugin 'christoomey/vim-tmux-navigator'
 
 " Snippet
-Plugin 'SirVer/ultisnips'
 Plugin 'honza/vim-snippets'
 
 " Language / Syntax
 Plugin 'pangloss/vim-javascript'
+Plugin 'maxmellon/vim-jsx-pretty'
+Plugin 'HerringtonDarkholme/yats.vim'
+Plugin 'chase/vim-ansible-yaml'
 Plugin 'plasticboy/vim-markdown'
 Plugin 'othree/html5.vim'
 Plugin 'mitsuhiko/vim-jinja'
@@ -171,7 +173,7 @@ autocmd filetype crontab setlocal nobackup nowritebackup
 " -----------------
 " Plugin: Solarized
 " -----------------
-let g:solarized_termcolors=256
+"let g:solarized_termcolors=256
 set background=dark
 try
     colorscheme solarized
@@ -220,7 +222,7 @@ nnoremap <leader>l :CtrlPLine<CR>
 " -------------------
 let g:pymode_breakpoint_bind = '<leader>pb'
 let g:pymode_folding = 0
-let g:pymode_lint_checkers = ['pyflakes', 'pep8']
+let g:pymode_lint_checkers = ['pep8']
 let g:pymode_lint_ignore = 'W0401,E402,W0611,C901'
 let g:pymode_lint_unmodified = 1
 let g:pymode_options = 0
@@ -240,16 +242,6 @@ nnoremap <silent> <leader>gl :Git pull<CR>
 nnoremap <silent> <leader>gp :Git push<CR>
 nnoremap <silent> <leader>gw :Gwrite<CR>
 nnoremap <silent> <leader>gr :Gread<CR>
-
-" ---------------------
-" Plugin: Indent guides
-" ---------------------
-let g:indent_guides_auto_colors = 0
-let g:indent_guides_guide_size = 1
-let g:indent_guides_start_level = 2
-autocmd vimenter,colorscheme * :hi indentguidesodd ctermfg=none ctermbg=235
-autocmd vimenter,colorscheme * :hi indentguideseven ctermfg=none ctermbg=235
-autocmd filetype python,html,htmldjango,htmljinja :IndentGuidesEnable
 
 " ------------
 " Plugin: Jedi
