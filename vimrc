@@ -98,9 +98,8 @@ set wildignore+=*.swp,*~,._*
 autocmd bufnewfile,bufread *.go set filetype=go
 autocmd bufnewfile,bufread *.html set filetype=htmldjango
 autocmd bufnewfile,bufread *.jinja set filetype=htmldjango
-autocmd bufnewfile,bufread *.json set filetype=javascript
-autocmd bufnewfile,bufread *.tsx,*jsx set filetype=typescript
-autocmd filetype html,htmldjango,htmljinja,jinja,less,css,scss,javascript,typescript,yaml,xml
+autocmd bufnewfile,bufread *.json,*.jsx,*.tsx set filetype=javascript
+autocmd filetype html,htmldjango,htmljinja,jinja,less,css,scss,javascript,yaml,xml
             \ setlocal ts=2 sts=2 sw=2 colorcolumn=80 smarttab copyindent
 
 " -------
@@ -144,6 +143,7 @@ Plugin 'honza/vim-snippets'
 
 " Language / Syntax
 Plugin 'pangloss/vim-javascript'
+Plugin 'yuezk/vim-js'
 Plugin 'maxmellon/vim-jsx-pretty'
 Plugin 'HerringtonDarkholme/yats.vim'
 Plugin 'chase/vim-ansible-yaml'
@@ -152,7 +152,6 @@ Plugin 'othree/html5.vim'
 Plugin 'mitsuhiko/vim-jinja'
 Plugin 'stephpy/vim-yaml'
 Plugin 'fatih/vim-go'
-Plugin 'mxw/vim-jsx'
 Plugin 'posva/vim-vue'
 Plugin 'styled-components/vim-styled-components'
 Plugin 'jparise/vim-graphql'
@@ -300,3 +299,8 @@ vmap <Leader>f<Bar> :Tabularize /<Bar><CR>
 " Plugin: vim-jsx
 " ---------------
 let g:jsx_ext_required = 0
+
+" ---------------
+" Plugin: vim-jsx-pretty
+" ---------------
+"let g:vim_jsx_pretty_colorful_config = 1
