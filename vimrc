@@ -113,7 +113,8 @@ call vundle#begin()
 Plugin 'gmarik/Vundle.vim'
 
 " Plugin list
-Plugin 'kien/ctrlp.vim'
+Plugin 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+Plugin 'junegunn/fzf.vim'
 Plugin 'scrooloose/nerdtree'
 Plugin 'scrooloose/nerdcommenter'
 Plugin 'tpope/vim-surround'
@@ -200,20 +201,17 @@ let g:airline#extensions#tabline#enabled=1
 let g:airline_powerline_fonts=1
 
 " -------------
-" Plugin: Ctrlp
+" Plugin: fzf
 " -------------
-let g:ctrlp_working_path_mode = 'rwa'
-let g:ctrlp_follow_symlinks = 1
-let g:ctrlp_custom_ignore = {
-   \ 'dir': '\.git$\|\.hg$\|\.svn$\|node_modules$\|bower_components$',
-   \ 'file': '\.so$\|\.pyc$\|\.jpe\?g$\|\.gif$\|\.png$\|\.eot$\|\.ttf$\|\.woff$\|\.woff2$\|\.swf$\|\.otf$'
-\ }
-let g:ctrlp_map = '<leader>t'
-let g:ctrlp_max_files = 50000
-let g:ctrlp_max_depth = 40
-let g:ctrlp_match_window = 'max:20'
-nnoremap <leader>b :CtrlPBuffer<CR>
-nnoremap <leader>l :CtrlPLine<CR>
+
+nmap <leader>f   :Files<CR>
+nmap <leader>b   :Buffer<CR>
+nmap <leader>bl  :BLines<CR>
+nmap <leader>l   :Lines<CR>
+nmap <leader>gf  :GFiles<CR>
+nmap <leader>gs  :GFiles?<CR>
+nmap <leader>gc  :Commits<CR>
+nmap <leader>gbc :BCommits<CR>
 
 " -------------------
 " Plugin: Python mode
@@ -230,9 +228,9 @@ let g:pymode_run_bind = '<leader>pr'
 " ----------------
 " Plugin: Fugitive
 " ----------------
-nnoremap <leader>gc :Git checkout 
+"nnoremap <leader>gc :Git checkout 
+"nnoremap <leader>gb :Git branch 
 nnoremap <leader>gm :Git merge 
-nnoremap <leader>gb :Git branch 
 nnoremap <leader>gg :git 
 nnoremap <leader>gs :Gstatus<CR>
 nnoremap <leader>gd :Gdiff<CR>
@@ -283,16 +281,16 @@ nnoremap <leader>as :Ag <cword><CR>
 " ---------------
 " Plugin: Tabular
 " ---------------
-nmap <Leader>f= :Tabularize /=<CR>
-vmap <Leader>f= :Tabularize /=<CR>
-nmap <Leader>f: :Tabularize /:<CR>
-vmap <Leader>f: :Tabularize /:<CR>
-nmap <Leader>f:: :Tabularize /:\zs<CR>
-vmap <Leader>f:: :Tabularize /:\zs<CR>
-nmap <Leader>f, :Tabularize /,<CR>
-vmap <Leader>f, :Tabularize /,<CR>
-nmap <Leader>f<Bar> :Tabularize /<Bar><CR>
-vmap <Leader>f<Bar> :Tabularize /<Bar><CR>
+nmap <Leader>t= :Tabularize /=<CR>
+vmap <Leader>t= :Tabularize /=<CR>
+nmap <Leader>t: :Tabularize /:<CR>
+vmap <Leader>t: :Tabularize /:<CR>
+nmap <Leader>t:: :Tabularize /:\zs<CR>
+vmap <Leader>t:: :Tabularize /:\zs<CR>
+nmap <Leader>t, :Tabularize /,<CR>
+vmap <Leader>t, :Tabularize /,<CR>
+nmap <Leader>t<Bar> :Tabularize /<Bar><CR>
+vmap <Leader>t<Bar> :Tabularize /<Bar><CR>
 
 " ---------------
 " Plugin: vim-jsx
