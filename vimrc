@@ -210,7 +210,7 @@ nmap <leader>bl  :BLines<CR>
 nmap <leader>l   :Lines<CR>
 nmap <leader>gf  :GFiles<CR>
 nmap <leader>gs  :GFiles?<CR>
-nmap <leader>gc  :Commits<CR>
+nmap <leader>gco :Commits<CR>
 nmap <leader>gbc :BCommits<CR>
 
 " -------------------
@@ -228,14 +228,14 @@ let g:pymode_run_bind = '<leader>pr'
 " ----------------
 " Plugin: Fugitive
 " ----------------
-"nnoremap <leader>gc :Git checkout 
-"nnoremap <leader>gb :Git branch 
-nnoremap <leader>gm :Git merge 
+nnoremap <leader>gc :git checkout 
+nnoremap <leader>gb :git branch 
+nnoremap <leader>gm :git merge 
 nnoremap <leader>gg :git 
 nnoremap <leader>gs :Gstatus<CR>
 nnoremap <leader>gd :Gdiff<CR>
-nnoremap <silent> <leader>gl :Git pull<CR>
-nnoremap <silent> <leader>gp :Git push<CR>
+nnoremap <silent> <leader>gl :git pull 
+nnoremap <silent> <leader>gp :git push 
 nnoremap <silent> <leader>gw :Gwrite<CR>
 nnoremap <silent> <leader>gr :Gread<CR>
 

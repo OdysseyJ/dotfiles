@@ -2,9 +2,14 @@
 
 cd ~
 
+/usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+
 # Install other packages
 brew install git
 brew install the_silver_searcher
+brew install tmux
+brew install zsh
+brew install fzf
 brew install ctags-exuberant
 
 # Install python packages
@@ -25,6 +30,13 @@ if [ -d ".dotfiles" ]; then
 else
     git clone https://github.com/scubedoo187/dotfiles.git .dotfiles
 fi
+
+# Vim related
+mkdir ~/.tmp
+mkdir ~/.tmp/vim
+mkdir ~/.tmp/vim/backup
+mkdir ~/.tmp/vim/swap
+mkdir ~/.tmp/vim/undo
 
 # Backup old files
 mkdir -p .old_dotfiles
