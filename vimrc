@@ -108,6 +108,7 @@ autocmd filetype html,htmldjango,htmljinja,jinja,less,css,scss,javascript,yaml,x
 
 filetype off
 set rtp +=~/.vim/bundle/Vundle.vim/
+set rtp +=/usr/local/bin/fzf
 call vundle#begin()
 
 Plugin 'gmarik/Vundle.vim'
@@ -119,6 +120,7 @@ Plugin 'scrooloose/nerdtree'
 Plugin 'scrooloose/nerdcommenter'
 Plugin 'tpope/vim-surround'
 Plugin 'tpope/vim-repeat'
+Plugin 'tpope/vim-sensible'
 Plugin 'rstacruz/sparkup'
 Plugin 'easymotion/vim-easymotion'
 Plugin 'rking/ag.vim'
@@ -128,8 +130,8 @@ Plugin 'majutsushi/tagbar'
 Plugin 'sjl/gundo.vim'
 Plugin 'vim-scripts/matchit.zip'
 Plugin 'Raimondi/delimitMate'
-Plugin 'klen/python-mode'
 Plugin 'davidhalter/jedi-vim'
+Plugin 'klen/python-mode'
 Plugin 'michaeljsmith/vim-indent-object'
 
 " Git
@@ -156,10 +158,12 @@ Plugin 'fatih/vim-go'
 Plugin 'styled-components/vim-styled-components'
 Plugin 'jparise/vim-graphql'
 Plugin 'w0rp/ale'
+Plugin 'vim-syntastic/syntastic.git'
 
 " Theme / Appearance
 Plugin 'bling/vim-airline'
-Plugin 'altercation/vim-colors-solarized'
+"Plugin 'altercation/vim-colors-solarized'
+Plugin 'junegunn/seoul256.vim'
 
 call vundle#end()
 filetype plugin indent on
@@ -173,11 +177,25 @@ autocmd filetype crontab setlocal nobackup nowritebackup
 " Plugin: Solarized
 " -----------------
 "let g:solarized_termcolors=256
+"set background=dark
+"try
+    "colorscheme solarized
+"catch /^Vim\%((\a\+)\)\=:E185/
+"endtry
+
+" ----------------
+" Plugin: Seoul256
+" ----------------
+" Unified color scheme (default: dark)
+let g:seoul256_background = 235
+colo seoul256
+
+"Light color scheme
+"colo seoul256-light
+
+" Switch
+set background=light
 set background=dark
-try
-    colorscheme solarized
-catch /^Vim\%((\a\+)\)\=:E185/
-endtry
 
 " ----------------
 " Plugin: Nerdtree
@@ -224,18 +242,19 @@ let g:pymode_lint_unmodified = 1
 let g:pymode_options = 0
 let g:pymode_rope = 0
 let g:pymode_run_bind = '<leader>pr'
+let g:pymode_python = 'python'
 
 " ----------------
 " Plugin: Fugitive
 " ----------------
-nnoremap <leader>gc :git checkout 
-nnoremap <leader>gb :git branch 
-nnoremap <leader>gm :git merge 
-nnoremap <leader>gg :git 
+nnoremap <leader>gc :Git checkout 
+nnoremap <leader>gb :Git branch 
+nnoremap <leader>gm :Git merge 
+nnoremap <leader>gg :Git 
 nnoremap <leader>gs :Gstatus<CR>
 nnoremap <leader>gd :Gdiff<CR>
-nnoremap <silent> <leader>gl :git pull 
-nnoremap <silent> <leader>gp :git push 
+nnoremap <silent> <leader>gl :Git pull 
+nnoremap <silent> <leader>gp :Git push 
 nnoremap <silent> <leader>gw :Gwrite<CR>
 nnoremap <silent> <leader>gr :Gread<CR>
 
@@ -292,12 +311,46 @@ vmap <Leader>t, :Tabularize /,<CR>
 nmap <Leader>t<Bar> :Tabularize /<Bar><CR>
 vmap <Leader>t<Bar> :Tabularize /<Bar><CR>
 
+
+" ---------------
+" Plugin: tagbar
+" ---------------
+nmap <Leader>ta :TagbarToggle<CR>
+
+
 " ---------------
 " Plugin: vim-jsx
 " ---------------
 let g:jsx_ext_required = 0
 
+
 " ---------------
 " Plugin: vim-jsx-pretty
 " ---------------
 "let g:vim_jsx_pretty_colorful_config = 1
+
+
+" ---------------
+" Plugin: syntastic
+" ---------------
+let g:jedi#goto_command = "<leader>d"
+let g:jedi#goto_assignments_command = "<leader>g"
+let g:jedi#goto_stubs_command = "<leader>s"
+let g:jedi#goto_definitions_command = ""
+let g:jedi#documentation_command = "K"
+let g:jedi#usages_command = "<leader>n"
+let g:jedi#completions_command = "<C-Space>"
+let g:jedi#rename_command = "<leader>r"
+
+
+" ---------------
+" Plugin: Syntastic
+" ---------------
+set statusline+=%#warningmsg#
+set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%*
+
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_auto_loc_list = 1
+let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_wq = 0
