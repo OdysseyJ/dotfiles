@@ -162,8 +162,8 @@ Plugin 'vim-syntastic/syntastic.git'
 
 " Theme / Appearance
 Plugin 'bling/vim-airline'
-"Plugin 'altercation/vim-colors-solarized'
-Plugin 'junegunn/seoul256.vim'
+Plugin 'altercation/vim-colors-solarized'
+"Plugin 'junegunn/seoul256.vim'
 
 call vundle#end()
 filetype plugin indent on
@@ -176,19 +176,19 @@ autocmd filetype crontab setlocal nobackup nowritebackup
 " -----------------
 " Plugin: Solarized
 " -----------------
-"let g:solarized_termcolors=256
+let g:solarized_termcolors=256
 "set background=dark
-"try
-    "colorscheme solarized
-"catch /^Vim\%((\a\+)\)\=:E185/
-"endtry
+try
+    colorscheme solarized
+catch /^Vim\%((\a\+)\)\=:E185/
+endtry
 
 " ----------------
 " Plugin: Seoul256
 " ----------------
 " Unified color scheme (default: dark)
-let g:seoul256_background = 235
-colo seoul256
+"let g:seoul256_background = 235
+"colo seoul256
 
 "Light color scheme
 "colo seoul256-light

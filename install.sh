@@ -11,6 +11,9 @@ brew install tmux
 brew install zsh
 brew install fzf
 brew install ctags-exuberant
+brew install wget
+brew install httpie
+brew install lsd
 
 # Install python packages
 sudo easy_install pip
