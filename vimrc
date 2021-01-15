@@ -133,6 +133,7 @@ Plugin 'Raimondi/delimitMate'
 Plugin 'davidhalter/jedi-vim'
 Plugin 'klen/python-mode'
 Plugin 'michaeljsmith/vim-indent-object'
+Plugin 'nathanaelkane/vim-indent-guides'
 
 " Git
 Plugin 'airblade/vim-gitgutter'
@@ -163,7 +164,6 @@ Plugin 'vim-syntastic/syntastic.git'
 " Theme / Appearance
 Plugin 'bling/vim-airline'
 Plugin 'altercation/vim-colors-solarized'
-"Plugin 'junegunn/seoul256.vim'
 
 call vundle#end()
 filetype plugin indent on
@@ -177,25 +177,12 @@ autocmd filetype crontab setlocal nobackup nowritebackup
 " Plugin: Solarized
 " -----------------
 let g:solarized_termcolors=256
-"set background=dark
+set background=dark
 try
     colorscheme solarized
 catch /^Vim\%((\a\+)\)\=:E185/
 endtry
 
-" ----------------
-" Plugin: Seoul256
-" ----------------
-" Unified color scheme (default: dark)
-"let g:seoul256_background = 235
-"colo seoul256
-
-"Light color scheme
-"colo seoul256-light
-
-" Switch
-set background=light
-set background=dark
 
 " ----------------
 " Plugin: Nerdtree
@@ -230,6 +217,8 @@ nmap <leader>gf  :GFiles<CR>
 nmap <leader>gs  :GFiles?<CR>
 nmap <leader>gco :Commits<CR>
 nmap <leader>gbc :BCommits<CR>
+let g:fzf_preview_window = ['right:50%', 'ctrl-/']
+
 
 " -------------------
 " Plugin: Python mode
@@ -243,6 +232,7 @@ let g:pymode_options = 0
 let g:pymode_rope = 0
 let g:pymode_run_bind = '<leader>pr'
 let g:pymode_python = 'python'
+
 
 " ----------------
 " Plugin: Fugitive
@@ -261,17 +251,20 @@ nnoremap <silent> <leader>gr :Gread<CR>
 " ------------
 " Plugin: Jedi
 " ------------
-let g:jedi#completions_command = "<C-k>"
+let g:jedi#goto_command = "<leader>g"
+let g:jedi#goto_assignments_command = "<leader>a"
+let g:jedi#goto_stubs_command = "<leader>s"
+let g:jedi#goto_definitions_command = "<leader>d"
 let g:jedi#documentation_command = "K"
-let g:jedi#goto_assignments_command = "<leader>ja"
-let g:jedi#goto_definitions_command = "<leader>jd"
-let g:jedi#popup_on_dot = 0
-let g:jedi#rename_command = "<leader>jr"
+let g:jedi#usages_command = "<leader>n"
+let g:jedi#completions_command = "<C-Space>"
+let g:jedi#rename_command = "<leader>r"
 let g:jedi#show_call_signatures = 0
-let g:jedi#usages_command = "<leader>ju"
 let g:jedi#use_tabs_not_buffers = 0
 let g:jedi#completions_enabled = 0
 let g:jedi#smart_auto_mappings = 0
+let g:jedi#popup_on_dot = 0
+
 
 " ------------------
 " Plugin: Easymotion
@@ -327,25 +320,15 @@ let g:jsx_ext_required = 0
 " ---------------
 " Plugin: vim-jsx-pretty
 " ---------------
-"let g:vim_jsx_pretty_colorful_config = 1
+let g:jsx_ext_required = 0
+let g:vim_jsx_pretty_template_tags = ['html', 'jsx', 'js']
+let g:vim_jsx_pretty_colorful_config = 1
+let g:vim_jsx_pretty_highlight_close_tag = 1
 
 
-" ---------------
-" Plugin: syntastic
-" ---------------
-let g:jedi#goto_command = "<leader>d"
-let g:jedi#goto_assignments_command = "<leader>g"
-let g:jedi#goto_stubs_command = "<leader>s"
-let g:jedi#goto_definitions_command = ""
-let g:jedi#documentation_command = "K"
-let g:jedi#usages_command = "<leader>n"
-let g:jedi#completions_command = "<C-Space>"
-let g:jedi#rename_command = "<leader>r"
-
-
-" ---------------
+" -----------------
 " Plugin: Syntastic
-" ---------------
+" -----------------
 set statusline+=%#warningmsg#
 set statusline+=%{SyntasticStatuslineFlag()}
 set statusline+=%*
@@ -354,3 +337,19 @@ let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_auto_loc_list = 1
 let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0
+
+
+" -----------
+" Plugin: Ale
+" -----------
+let b:ale_linters = {'javascript': ['eslint']}
+
+
+" ---------------------
+" Plugin: indent-guides
+" ---------------------
+
+let g:indent_guides_auto_colors = 1
+let g:indent_guides_enable_on_vim_startup = 1
+autocmd VimEnter,Colorscheme * :hi IndentGuidesOdd  ctermbg=gray
+autocmd VimEnter,Colorscheme * :hi IndentGuidesEven ctermbg=blue
