@@ -61,6 +61,7 @@ set wildignore+=*.zip,*.tar.gz,*.tar.bz2,*.rar,*.tar.xz
 set wildmenu
 set wildmode=list:longest
 set wrap
+set mouse=a
 
 " trailing whitespace del
 nnoremap <leader>zz :%s/\s\+$//e<CR>
