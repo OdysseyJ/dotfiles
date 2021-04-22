@@ -139,6 +139,7 @@ Plugin 'nathanaelkane/vim-indent-guides'
 " Git
 Plugin 'airblade/vim-gitgutter'
 Plugin 'tpope/vim-fugitive'
+Plugin 'zivyangll/git-blame.vim'
 
 " Tmux
 Plugin 'christoomey/vim-tmux-navigator'
@@ -241,13 +242,20 @@ let g:pymode_python = 'python'
 nnoremap <leader>gc :Git checkout 
 nnoremap <leader>gb :Git branch 
 nnoremap <leader>gm :Git merge 
-nnoremap <leader>gg :Git 
-nnoremap <leader>gs :Gstatus<CR>
+nnoremap <leader>gg :Git blame<CR>
+nnoremap <leader>gs :Git<CR>
 nnoremap <leader>gd :Gdiff<CR>
 nnoremap <silent> <leader>gl :Git pull 
 nnoremap <silent> <leader>gp :Git push 
 nnoremap <silent> <leader>gw :Gwrite<CR>
 nnoremap <silent> <leader>gr :Gread<CR>
+
+
+" ----------------
+" Plugin: Git-Blame
+" ----------------
+nnoremap <Leader>m :<C-u>call gitblame#echo()<CR>
+
 
 " ------------
 " Plugin: Jedi
@@ -265,6 +273,7 @@ let g:jedi#use_tabs_not_buffers = 0
 let g:jedi#completions_enabled = 0
 let g:jedi#smart_auto_mappings = 0
 let g:jedi#popup_on_dot = 0
+let g:jedi#added_sys_path = ['/Users/yg_jung/.virtualenvs/queenspark/lib/python2.7/site-packages', '/Users/yg_jung/.virtualenvs/queenspark/src/django-haystack']
 
 
 " ------------------
