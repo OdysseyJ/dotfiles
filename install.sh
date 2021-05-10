@@ -2,11 +2,11 @@
 
 cd ~
 
-/usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+# Install homebrew
+/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 
 # Install other packages
 brew install git
-brew install the_silver_searcher
 brew install tmux
 brew install zsh
 brew install fzf
@@ -14,6 +14,17 @@ brew install ctags-exuberant
 brew install wget
 brew install httpie
 brew install lsd
+brew install neovim
+brew install cask
+brew install zsh-syntax-highlighting
+brew tap homebrew/cask-fonts
+brew install --cask font-hack-nerd-font
+
+# Set default shell to zsh
+chsh -s $(which zsh)
+
+# Apply plugin
+source /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
 # Install python packages
 sudo easy_install pip
@@ -31,25 +42,20 @@ fi
 if [ -d ".dotfiles" ]; then
     cd .dotfiles && git pull origin master && cd ~
 else
-    git clone https://github.com/scubedoo187/dotfiles.git .dotfiles
+    git clone https://github.com/Odysseyj/dotfiles.git .dotfiles
 fi
 
-# Vim related
-mkdir ~/.tmp
-mkdir ~/.tmp/vim
-mkdir ~/.tmp/vim/backup
-mkdir ~/.tmp/vim/swap
-mkdir ~/.tmp/vim/undo
+# Install vim-plug
+sh -c 'curl -fLo "${XDG_DATA_HOME:-$HOME/.local/share}"/nvim/site/autoload/plug.vim --create-dirs \
+       https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
 
 # Backup old files
 mkdir -p .old_dotfiles
-[ -d ".vim" ] && mv .vim .old_dotfiles
-[ -d ".vimrc" ] && mv .vimrc .old_dotfiles
+[ -d ".config/nvim/init.vim" ] && mv .config/nvim/init.vim .old_dotfiles
 [ -d ".zshrc" ] && mv .zshrc .old_dotfiles
 
 # Link rc files
-ln -s .dotfiles/vimrc .vimrc
-ln -s .dotfiles/vim .vim
+ln -s .dotfiles/init.vim .config/nvim/init.vim
 ln -s .dotfiles/zshrc .zshrc
 ln -s .dotfiles/tmux.conf .tmux.conf
 
@@ -60,12 +66,6 @@ else
     git clone https://github.com/tmux-plugins/tpm .tmux/plugins/tpm
 fi
 
-# Install Vundle
-if [ -d ".vim/bundle/Vundle.vim" ]; then
-    cd .vim/bundle/Vundle.vim && git pull origin master && cd ~
-else
-    git clone https://github.com/gmarik/Vundle.vim.git .vim/bundle/Vundle.vim
-fi
-
+# Install dependencies.
 vim +PluginInstall +qall
 ~/.tmux/plugins/tpm/scripts/install_plugins.sh
