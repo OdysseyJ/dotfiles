@@ -68,4 +68,5 @@ fi
 
 # Install dependencies.
 vim +PluginInstall +qall
+vim +"CocInstall coc-python" +qall
 ~/.tmux/plugins/tpm/scripts/install_plugins.sh
