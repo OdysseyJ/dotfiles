@@ -56,9 +56,9 @@ mkdir -p .old_dotfiles
 [ -d ".tmux.conf" ] && mv .tumx.conf .old_dotfiles
 
 # Link rc files
-ln -s .dotfiles/init.vim .config/nvim/init.vim
-ln -s .dotfiles/zshrc .zshrc
-ln -s .dotfiles/tmux.conf .tmux.conf
+ln -s ~/.dotfiles/init.vim ~/.config/nvim/init.vim
+ln -s ~/.dotfiles/zshrc ~/.zshrc
+ln -s ~/.dotfiles/tmux.conf ~/.tmux.conf
 
 # Install tpm
 if [ -d ".tmux/plugins/tpm " ]; then
@@ -68,6 +68,6 @@ else
 fi
 
 # Install dependencies.
-vim +PluginInstall +qall
+vim +PlugInstall +qall
 vim +"CocInstall coc-python" +qall
 ~/.tmux/plugins/tpm/scripts/install_plugins.sh
