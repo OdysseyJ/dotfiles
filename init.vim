@@ -164,7 +164,7 @@ let g:jedi#use_tabs_not_buffers = 0
 let g:jedi#completions_enabled = 0
 let g:jedi#smart_auto_mappings = 0
 let g:jedi#popup_on_dot = 0
-let g:jedi#added_sys_path = ['/Users/seongwoon/.virtualenvs/queenspark/lib/python2.7/site-packages', '/Users/seongwoon/.virtualenvs/queenspark/src/django-haystack']
+" let g:jedi#added_sys_path = ['/Users/seongwoon/.virtualenvs/queenspark/lib/python2.7/site-packages', '/Users/seongwoon/.virtualenvs/queenspark/src/django-haystack']
 
 " ----------------
 " Plugin: Git-Blame
