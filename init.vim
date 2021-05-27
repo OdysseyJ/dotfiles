@@ -1,3 +1,104 @@
+set nocompatible
+filetype off
+
+syntax enable
+
+let mapleader=","
+
+set autoindent
+set backspace=indent,eol,start
+set copyindent
+set cursorline
+set encoding=utf-8
+set expandtab
+set formatoptions=cqnr1
+set gdefault
+set hidden
+set history=1000
+set hlsearch
+set ignorecase
+set incsearch
+set laststatus=2
+set list
+set listchars=tab:>-,trail:-,extends:#
+set nojoinspaces
+set number
+set pastetoggle=<Leader>p
+set relativenumber
+set ruler
+set scrolloff=1
+set shiftwidth=4
+set showcmd
+set showmatch
+set smartcase
+set smarttab
+set softtabstop=4
+set splitbelow
+set splitright
+set statusline=%<%f\                     " Filename
+set statusline+=%=%-14.(%l,%c%V%)\ %p%%  " Right aligned file nv info
+set statusline+=%w%h%m%r                 " Options
+set statusline+=%{fugitive#statusline()} " Git Hotness
+set statusline+=\ [%{&ff}/%Y]            " Filetype
+set statusline+=\ [%{getcwd()}]          " Current dir
+set tabstop=4
+set title
+set undodir=~/.tmp/vim/undo/
+set undofile
+set undolevels=1000
+set visualbell
+set wildignore+=*.o,*.out,*.obj,*.so,*.pyc
+set wildignore+=*.so,*.swp,*.zip,*.pyc
+set wildignore+=*.swp,*~,._*
+set wildignore+=*.zip,*.tar.gz,*.tar.bz2,*.rar,*.tar.xz
+set wildmenu
+set wildmode=list:longest
+set wrap
+set mouse=a
+set number
+
+
+" trailing whitespace del
+nnoremap <Leader>zz :%s/\s\+$//e<CR>
+
+inoremap <C-c> <Esc>
+noremap <Left> <nop>
+noremap <Down> <nop>
+noremap <Up> <nop>
+noremap <Right> <nop>
+
+noremap <C-J>   <C-W>j
+noremap <C-K>   <C-W>k
+noremap <C-H>   <C-W>h
+noremap <C-L>   <C-W>l
+
+noremap <C-n> :bp<CR>
+noremap <C-m> :bn<CR>
+
+nnoremap bd :bd<CR>
+nnoremap td :tabclose<CR>
+nnoremap tn :tabnew<CR>
+nnoremap th :tabprev<CR>
+nnoremap tj :tabfirst<CR>
+nnoremap tk :tablast<CR>
+nnoremap tl :tabnext<CR>
+
+nnoremap H ^
+nnoremap L g_
+
+set wildignore+=*.so,*.swp,*.zip,*.pyc
+set wildignore+=*.o,*.out,*.obj,*.so,*.pyc
+set wildignore+=*.zip,*.tar.gz,*.tar.bz2,*.rar,*.tar.xz
+set wildignore+=*/.sass-cache/*
+set wildignore+=*.swp,*~,._*
+
+autocmd bufnewfile,bufread *.go set filetype=go
+autocmd bufnewfile,bufread *.html set filetype=htmldjango
+autocmd bufnewfile,bufread *.jinja set filetype=htmldjango
+autocmd bufnewfile,bufread *.json,*.jsx,*.tsx set filetype=javascript
+autocmd filetype html,htmldjango,htmljinja,jinja,less,css,scss,javascript,yaml,xml
+            \ setlocal ts=2 sts=2 sw=2 colorcolumn=80 smarttab copyindenta
+
 "Plug list
 call plug#begin()
 " fz
@@ -47,7 +148,6 @@ Plug 'mhartington/oceanic-next'
 
 call plug#end()
 
-let mapleader=","
 " NERD Commenter
 " Add spaces after comment delimiters by default
 let g:NERDSpaceDelims = 1
@@ -67,15 +167,6 @@ let g:NERDTrimTrailingWhitespace = 1
 map <Leader>cc <plug>ERDComToggleComment
 map <Leader>c<space> <plug>NERDComCommentN
 
-" Vim Config
-set number
-set ai
-set si
-set shiftwidth=2
-set tabstop=2
-set ignorecase
-set hlsearch
-set expandtab
 
 "" NERD Tree Config
 let g:NERDTreeDirArrowExpandable = '▸'
@@ -106,12 +197,13 @@ colorscheme OceanicNext
 " --------------
 let g:ale_linters = {
 \   'javascript': ['eslint'],
-\   'python': ['flake8'],
+\   'python': ['flake8']
 \}
 let g:ale_fixers = {
 \   'javascript': ['eslint'],
 \   'python': ['black', 'isort'],
 \}
+
 nnoremap <leader>af :ALEFix<CR>
 set colorcolumn=89
 set textwidth=88
