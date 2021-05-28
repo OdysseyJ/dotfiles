@@ -62,10 +62,10 @@ set number
 nnoremap <Leader>zz :%s/\s\+$//e<CR>
 
 inoremap <C-c> <Esc>
-noremap <Left> <nop>
-noremap <Down> <nop>
-noremap <Up> <nop>
-noremap <Right> <nop>
+inoremap <Left> <nop>
+inoremap <Down> <nop>
+inoremap <Up> <nop>
+inoremap <Right> <nop>
 
 noremap <C-J>   <C-W>j
 noremap <C-K>   <C-W>k
@@ -294,6 +294,8 @@ if (has("termguicolors"))
  set termguicolors
 endif
 
+
+let g:python3_host_prog=$HOME.'/.venv/bin/python3'
 
 " For Neovim 0.1.3 and 0.1.4
 let $NVIM_TUI_ENABLE_TRUE_COLOR=1

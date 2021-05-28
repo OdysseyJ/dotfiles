@@ -28,6 +28,14 @@ chsh -s $(which zsh)
 # pyenv
 brew install openssl readline sqlite3 xz zlib
 curl https://pyenv.run | zsh
+brew install pyenv-virtualenv
+
+pyenv install -v 3.9.1
+pyenv global 3.9.1
+pyenv virtualenv 3.9.1 seorae
+~/.pyenv/versions/3.9.1/bin/python3 -m venv ~/.venv
+~/.venv/bin/python3 -m pip install --upgrade pip
+~/.venv/bin/python3 -m pip install neovim pynvim
 
 # Install vim-plug
 sh -c 'curl -fLo "${XDG_DATA_HOME:-$HOME/.local/share}"/nvim/site/autoload/plug.vim --create-dirs \
