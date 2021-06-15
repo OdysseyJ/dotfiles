@@ -113,8 +113,6 @@ Plug 'tpope/vim-fugitive'          " vim git wrapper
 Plug 'preservim/nerdtree'
 Plug 'preservim/nerdtree' |
             \ Plug 'Xuyuanp/nerdtree-git-plugin'
-" search
-Plug 'ctrlpvim/ctrlp.vim'          " ctrl p search
 " auto pair
 Plug 'jiangmiao/auto-pairs'        " pairs quotes or braket
 " dev icon
@@ -172,6 +170,19 @@ map <Leader>c<space> <plug>NERDComCommentN
 let g:NERDTreeDirArrowExpandable = '▸'
 let g:NERDTreeDirArrowCollapsible = '▾'
 
+" -------------
+" Plugin: fzf
+" -------------
+
+nmap <Leader>f   :Files<CR>
+nmap <Leader>b   :Buffer<CR>
+nmap <Leader>bl  :BLines<CR>
+nmap <Leader>l   :Lines<CR>
+nmap <Leader>gf  :GFiles<CR>
+nmap <Leader>gs  :GFiles?<CR>
+nmap <Leader>gco :Commits<CR>
+nmap <Leader>gbc :BCommits<CR>
+let g:fzf_preview_window = ['right:50%', 'ctrl-/']
 
 " ----------------
 " Plugin: Nerdtree
@@ -227,16 +238,16 @@ nnoremap <C-l> :bnext!<Enter>        " 다음 버퍼로 이동
 " ----------------
 " Plugin: Fugitive
 " ----------------
-nnoremap <leader>gc :Git checkout 
-nnoremap <leader>gb :Git branch 
-nnoremap <leader>gm :Git merge 
-nnoremap <leader>gg :Git 
+nnoremap <leader>gc :Git checkout
+nnoremap <leader>gb :Git branch
+nnoremap <leader>gm :Git merge
+nnoremap <leader>gg :Git
 nnoremap <leader>gs :Gstatus<CR>
 nnoremap <leader>gg :Git blame<CR>
 nnoremap <leader>gs :Git<CR>
 nnoremap <leader>gd :Gdiff<CR>
-nnoremap <silent> <leader>gl :Git pull 
-nnoremap <silent> <leader>gp :Git push 
+nnoremap <silent> <leader>gl :Git pull
+nnoremap <silent> <leader>gp :Git push
 nnoremap <silent> <leader>gw :Gwrite<CR>
 nnoremap <silent> <leader>gr :Gread<CR>
 
@@ -266,7 +277,7 @@ nnoremap <Leader>m :<C-u>call gitblame#echo()<CR>
 " ----------
 " Plugin: Ag
 " ----------
-nnoremap <leader>aa :Ag 
+nnoremap <leader>aa :Ag
 nnoremap <leader>as :Ag <cword><CR>
 
 " ----------
@@ -276,12 +287,6 @@ noremap <Leader>y "*y
 noremap <Leader>p "*p
 noremap <Leader>Y "+y
 noremap <Leader>P "+p
-
-"" Ctrl p ignore list
-let g:ctrlp_custom_ignore = {
-\ 'dir':  '\.git$\|public$\|log$\|tmp$\|vendor$\|node_modules$',
-\ 'file': '\v\.(exe|so|dll)$'
-\ }
 
 
 set encoding=UTF-8

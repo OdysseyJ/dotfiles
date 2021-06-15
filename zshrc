@@ -73,6 +73,7 @@ ZSH_THEME="agnoster"
 plugins=(git fzf)
 
 source $ZSH/oh-my-zsh.sh
+[ -f "$HOME/.zshrc.local" ] && source ~/.zshrc.local
 
 prompt_context() {
   if [[ "$USER" != "$DEFAULT_USER" || -n "$SSH_CLIENT" ]]; then
