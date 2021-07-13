@@ -72,17 +72,6 @@ noremap <C-K>   <C-W>k
 noremap <C-H>   <C-W>h
 noremap <C-L>   <C-W>l
 
-noremap <C-n> :bp<CR>
-noremap <C-m> :bn<CR>
-
-nnoremap bd :bd<CR>
-nnoremap td :tabclose<CR>
-nnoremap tn :tabnew<CR>
-nnoremap th :tabprev<CR>
-nnoremap tj :tabfirst<CR>
-nnoremap tk :tablast<CR>
-nnoremap tl :tabnext<CR>
-
 nnoremap H ^
 nnoremap L g_
 
@@ -96,8 +85,6 @@ autocmd bufnewfile,bufread *.go set filetype=go
 autocmd bufnewfile,bufread *.html set filetype=htmldjango
 autocmd bufnewfile,bufread *.jinja set filetype=htmldjango
 autocmd bufnewfile,bufread *.json,*.jsx,*.tsx set filetype=javascript
-autocmd filetype html,htmldjango,htmljinja,jinja,less,css,scss,javascript,yaml,xml
-            \ setlocal ts=2 sts=2 sw=2 colorcolumn=80 smarttab copyindenta
 
 "Plug list
 call plug#begin()
@@ -119,9 +106,12 @@ Plug 'jiangmiao/auto-pairs'        " pairs quotes or braket
 Plug 'ryanoasis/vim-devicons'      " dev icons for vim
 " tagbar
 Plug 'majutsushi/tagbar'           " browse tag plugin
-" ale linter
-Plug 'dense-analysis/ale'
-" commenter
+
+"linter
+" Plug 'dense-analysis/ale'
+
+
+"commenter
 Plug 'scrooloose/nerdcommenter'
 " indent
 Plug 'Yggdroot/indentLine'
@@ -135,7 +125,6 @@ Plug 'terryma/vim-multiple-cursors'
 
 " coc.nvim
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
-Plug 'davidhalter/jedi-vim'
 
 " vim surround
 Plug 'tpope/vim-surround'
@@ -206,20 +195,21 @@ colorscheme OceanicNext
 " --------------
 " Plugin: ALE
 " --------------
-let g:ale_linters = {
-\   'javascript': ['eslint'],
-\   'python': ['flake8']
-\}
-let g:ale_fixers = {
-\   'javascript': ['eslint'],
-\   'python': ['black', 'isort'],
-\}
-
-nnoremap <leader>af :ALEFix<CR>
+" let g:ale_linters = {
+" \   'javascript': ['eslint'],
+" \   'python': ['flake8']
+" \}
+" let g:ale_fixers = {
+" \   'javascript': ['eslint'],
+" \   'python': ['black', 'isort'],
+" \}
+" nnoremap <leader>af :ALEFix<CR>
+"
+" let g:pymode_options_max_line_length = 88
+" let g:ale_fix_on_save = 1
 set colorcolumn=89
 set textwidth=88
-let g:pymode_options_max_line_length = 88
-" let g:ale_fix_on_save = 1
+
 
 " ---------------
 " Plugin: Airline
@@ -251,22 +241,43 @@ nnoremap <silent> <leader>gp :Git push
 nnoremap <silent> <leader>gw :Gwrite<CR>
 nnoremap <silent> <leader>gr :Gread<CR>
 
+
+" ------------
+" Plugin: Coc
+" ------------
+let g:python3_host_prog = '/usr/local/bin/python3'
+let g:coc_global_extensions = ['coc-explorer', 'coc-json', 'coc-snippets', 'coc-git', 'coc-python']
+set updatetime=300
+
+" Use <c-space> to trigger completetion.
+inoremap <silent><expr> <S-space> coc#refresh()
+
+" Goto definition
+nmap <silent> gd <Plug>(coc-definition)
+
+" Formatting selected code
+xmap <leader>af <Plug>(coc-format)
+nmap <leader>af <Plug>(coc-format)
+
+" Renaming
+nmap <leader>rn <Plug>(coc-rename)
+
 " ------------
 " Plugin: Jedi
 " ------------
-let g:jedi#goto_command = "<leader>g"
-let g:jedi#goto_assignments_command = "<leader>a"
-let g:jedi#goto_stubs_command = "<leader>s"
-let g:jedi#goto_definitions_command = "<leader>d"
-let g:jedi#documentation_command = "K"
-let g:jedi#usages_command = "<leader>n"
-let g:jedi#completions_command = "<S-Space>"
-let g:jedi#rename_command = "<leader>r"
-let g:jedi#show_call_signatures = 0
-let g:jedi#use_tabs_not_buffers = 0
-let g:jedi#completions_enabled = 0
-let g:jedi#smart_auto_mappings = 0
-let g:jedi#popup_on_dot = 0
+" let g:jedi#goto_command = "<leader>g"
+" let g:jedi#goto_assignments_command = "<leader>a"
+" let g:jedi#goto_stubs_command = "<leader>s"
+" let g:jedi#goto_definitions_command = "<leader>d"
+" let g:jedi#documentation_command = "K"
+" let g:jedi#usages_command = "<leader>n"
+" let g:jedi#completions_command = "<S-Space>"
+" let g:jedi#rename_command = "<leader>r"
+" let g:jedi#show_call_signatures = 0
+" let g:jedi#use_tabs_not_buffers = 0
+" let g:jedi#completions_enabled = 0
+" let g:jedi#smart_auto_mappings = 0
+" let g:jedi#popup_on_dot = 0
 " let g:jedi#added_sys_path = ['/Users/seongwoon/.virtualenvs/queenspark/lib/python2.7/site-packages', '/Users/seongwoon/.virtualenvs/queenspark/src/django-haystack']
 
 " ----------------

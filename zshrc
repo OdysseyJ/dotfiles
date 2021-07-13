@@ -112,8 +112,8 @@ prompt_context() {
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
-export WORKON_HOME=$HOME/.virtualenvs
-export DJANGO_SETTINGS_MODULE='queenspark.settings.local'
+# export WORKON_HOME=$HOME/.virtualenvs
+# export DJANGO_SETTINGS_MODULE='queenspark.settings.local'
 
 export LDFLAGS="-L/usr/local/opt/openssl/lib"
 export CPPFLAGS="-I/usr/local/opt/openssl/include"
@@ -175,3 +175,4 @@ eval "$(pyenv init -)"
 # the following to ~/.bashrc:
 
 eval "$(pyenv virtualenv-init -)"
+export PATH="/usr/local/opt/node@12/bin:$PATH"
