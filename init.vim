@@ -125,6 +125,8 @@ Plug 'terryma/vim-multiple-cursors'
 
 " coc.nvim
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
+Plug 'leafgarland/typescript-vim'
+Plug 'peitalin/vim-jsx-typescript'
 
 " vim surround
 Plug 'tpope/vim-surround'
@@ -163,7 +165,8 @@ let g:NERDTreeDirArrowCollapsible = '▾'
 " Plugin: fzf
 " -------------
 
-nmap <Leader>f   :Files<CR>
+nmap <Leader>F   :Files<CR>
+nmap <Leader>f   :GFiles<CR>
 nmap <Leader>b   :Buffer<CR>
 nmap <Leader>bl  :BLines<CR>
 nmap <Leader>l   :Lines<CR>
@@ -246,7 +249,7 @@ nnoremap <silent> <leader>gr :Gread<CR>
 " Plugin: Coc
 " ------------
 let g:python3_host_prog = '/usr/local/bin/python3'
-let g:coc_global_extensions = ['coc-explorer', 'coc-json', 'coc-snippets', 'coc-git', 'coc-python']
+let g:coc_global_extensions = ['coc-explorer', 'coc-json', 'coc-snippets', 'coc-git', 'coc-python', 'coc-tsserver']
 set updatetime=300
 
 " Use tab for trigger completion with characters ahead and navigate.
@@ -264,7 +267,7 @@ function! s:check_back_space() abort
 endfunction
 
 " Use <S-space> to trigger completion.
-inoremap <silent><expr> <S-space> coc#refresh()
+inoremap <silent><expr> <c-space> coc#refresh
 
 " Use <cr> to confirm completion, `<C-g>u` means break undo chain at current
 " position. Coc only does snippet and additional edit on confirm.
@@ -305,6 +308,9 @@ nmap <leader>af <Plug>(coc-format)
 
 " Renaming
 nmap <leader>rn <Plug>(coc-rename)
+
+" set filetypes as typescriptreact
+autocmd BufNewFile,BufRead *.tsx,*.jsx set filetype=typescriptreact
 
 " ------------
 " Plugin: Jedi
