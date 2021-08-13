@@ -66,6 +66,8 @@ inoremap <Left> <nop>
 inoremap <Down> <nop>
 inoremap <Up> <nop>
 inoremap <Right> <nop>
+inoremap <C-j> <C-d>
+inoremap <C-k> <C-u>
 
 noremap <C-J>   <C-W>j
 noremap <C-K>   <C-W>k
@@ -121,7 +123,8 @@ Plug 'zivyangll/git-blame.vim'
 Plug 'terryma/vim-smooth-scroll'
 
 " multi cursor
-Plug 'terryma/vim-multiple-cursors'
+" Plug 'terryma/vim-multiple-cursors'
+Plug 'mg979/vim-visual-multi', {'branch': 'master'}
 
 " coc.nvim
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
@@ -244,6 +247,12 @@ nnoremap <silent> <leader>gp :Git push
 nnoremap <silent> <leader>gw :Gwrite<CR>
 nnoremap <silent> <leader>gr :Gread<CR>
 
+" ------------
+" Plugin: Visual Multi
+" ------------
+let g:VM_maps = {}
+let g:VM_maps['Find Under']         = '<C-n>'           " replace C-n
+let g:VM_maps['Find Subword Under'] = '<C-n>'           " replace visual C-n
 
 " ------------
 " Plugin: Coc
@@ -311,6 +320,11 @@ nmap <leader>rn <Plug>(coc-rename)
 
 " set filetypes as typescriptreact
 autocmd BufNewFile,BufRead *.tsx,*.jsx set filetype=typescriptreact
+
+" Coc-htmldjango
+let g:coc_filetype_map = {
+  \ 'jinja.html': 'htmldjango',
+  \ }
 
 " ------------
 " Plugin: Jedi
