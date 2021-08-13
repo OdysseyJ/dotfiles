@@ -258,7 +258,7 @@ let g:VM_maps['Find Subword Under'] = '<C-n>'           " replace visual C-n
 " Plugin: Coc
 " ------------
 let g:python3_host_prog = '/usr/local/bin/python3'
-let g:coc_global_extensions = ['coc-explorer', 'coc-json', 'coc-snippets', 'coc-git', 'coc-python', 'coc-tsserver']
+let g:coc_global_extensions = ['coc-json', 'coc-snippets', 'coc-git', 'coc-python', 'coc-tsserver', 'coc-eslint', 'coc-tslint-plugin', 'coc-styled-components', 'coc-prettier']
 set updatetime=300
 
 " Use tab for trigger completion with characters ahead and navigate.
