@@ -9,7 +9,7 @@ set autoindent
 set backspace=indent,eol,start
 set copyindent
 set cursorline
-set encoding=utf-8
+set encoding=UTF-8
 set expandtab
 set formatoptions=cqnr1
 set gdefault
@@ -57,7 +57,6 @@ set wrap
 set mouse=a
 set number
 
-
 " trailing whitespace del
 nnoremap <Leader>zz :%s/\s\+$//e<CR>
 
@@ -102,6 +101,7 @@ Plug 'tpope/vim-fugitive'          " vim git wrapper
 Plug 'preservim/nerdtree'
 Plug 'preservim/nerdtree' |
             \ Plug 'Xuyuanp/nerdtree-git-plugin'
+Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
 " auto pair
 Plug 'jiangmiao/auto-pairs'        " pairs quotes or braket
 " dev icon
@@ -123,7 +123,6 @@ Plug 'zivyangll/git-blame.vim'
 Plug 'terryma/vim-smooth-scroll'
 
 " multi cursor
-" Plug 'terryma/vim-multiple-cursors'
 Plug 'mg979/vim-visual-multi', {'branch': 'master'}
 
 " coc.nvim
@@ -276,7 +275,11 @@ function! s:check_back_space() abort
 endfunction
 
 " Use <S-space> to trigger completion.
-inoremap <silent><expr> <c-space> coc#refresh
+inoremap <silent><expr> <c-]> coc#refresh()
+
+" Use <Tab> and <S-Tab> to navigate the completion list:
+inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
+inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
 
 " Use <cr> to confirm completion, `<C-g>u` means break undo chain at current
 " position. Coc only does snippet and additional edit on confirm.
