@@ -109,6 +109,8 @@ Plug 'ryanoasis/vim-devicons'      " dev icons for vim
 " tagbar
 Plug 'majutsushi/tagbar'           " browse tag plugin
 
+Plug 'easymotion/vim-easymotion'   " easy motion
+
 "linter
 " Plug 'dense-analysis/ale'
 
@@ -160,6 +162,36 @@ map <Leader>c<space> <plug>NERDComCommentN
 
 
 " -------------
+" Plugin: easymotion
+" -------------
+" Gif config
+map  / <Plug>(easymotion-sn)
+omap / <Plug>(easymotion-tn)
+
+" These `n` & `N` mappings are options. You do not have to map `n` & `N` to EasyMotion.
+" Without these mappings, `n` & `N` works fine. (These mappings just provide
+" different highlight method and have some other features )
+map  n <Plug>(easymotion-next)
+map  N <Plug>(easymotion-prev)
+
+let g:EasyMotion_do_mapping = 0 " Disable default mappings
+
+" Jump to anywhere you want with minimal keystrokes, with just one key binding.
+" `s{char}{label}`
+nmap s <Plug>(easymotion-overwin-f)
+" or
+" `s{char}{char}{label}`
+" Need one more keystroke, but on average, it may be more comfortable.
+nmap s <Plug>(easymotion-overwin-f2)
+
+" Turn on case-insensitive feature
+let g:EasyMotion_smartcase = 1
+
+" JK motions: Line motions
+map <Leader>j <Plug>(easymotion-j)
+map <Leader>k <Plug>(easymotion-k)
+
+" -------------
 " Plugin: fzf
 " -------------
 
@@ -190,6 +222,7 @@ let NERDTreeKeepTreeInNewTab=1
 let NERDTreeWinSize=40
 nmap <leader>nt :NERDTreeFind<CR>
 nmap <leader>nn :NERDTreeToggle<CR>
+
 let g:NERDTreeHighlightFolders = 1 " enables folder icon highlighting using exact match
 let g:NERDTreeHighlightFoldersFullName = 1 " highlights the folder name
 let g:NERDTreeFileExtensionHighlightFullName = 1
@@ -347,7 +380,7 @@ function! s:show_documentation()
   endif
 endfunction
 
-" Highlight the symbol and its references when holding the 
+" Highlight the symbol and its references when holding the
 autocmd CursorHold * silent call CocActionAsync('highlight')
 
 " Formatting selected code
