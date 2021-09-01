@@ -258,7 +258,8 @@ let g:NERDTreeExactMatchHighlightColor = {} " this line is needed to avoid error
 let g:NERDTreeExactMatchHighlightColor['.gitignore'] = s:git_orange " sets the color for .gitignore files
 
 let g:NERDTreeExtensionHighlightColor = {} " this line is needed to avoid error
-let g:NERDTreeExtensionHighlightColor['py'] = s:lightGreen " sets the color for .gitignore files
+let g:NERDTreeExtensionHighlightColor['py'] = s:green" sets the color for .gitignore files
+let g:NERDTreeExtensionHighlightColor['json'] = s:lightGreen " sets the color for .gitignore files
 
 
 " Theme
