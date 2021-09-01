@@ -195,8 +195,7 @@ map <Leader>k <Plug>(easymotion-k)
 " Plugin: fzf
 " -------------
 
-nmap <Leader>F   :Files<CR>
-nmap <Leader>f   :GFiles<CR>
+nmap <Leader>f   :Files<CR>
 nmap <Leader>b   :Buffer<CR>
 nmap <Leader>bl  :BLines<CR>
 nmap <Leader>l   :Lines<CR>
