@@ -139,6 +139,10 @@ Plug 'tpope/vim-repeat'
 " vim theme
 Plug 'mhartington/oceanic-next'
 
+" fancy start screen
+Plug 'mhinz/vim-startify'
+
+
 call plug#end()
 
 " NERD Commenter
@@ -160,6 +164,13 @@ let g:NERDTrimTrailingWhitespace = 1
 map <Leader>cc <plug>ERDComToggleComment
 map <Leader>c<space> <plug>NERDComCommentN
 
+" -----------------------------
+" Plugin: Startify
+" -----------------------------
+let g:startify_bookmarks = systemlist("cut -sd' ' -f 2- ~/.NERDTreeBookmarks")
+nnoremap <leader>sl :SLoad 
+nnoremap <leader>sc :SClose<CR>
+nnoremap <leader>ss :SSave
 
 " -------------
 " Plugin: easymotion
