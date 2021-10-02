@@ -27,12 +27,12 @@ set pastetoggle=<Leader>p
 set relativenumber
 set ruler
 set scrolloff=1
-set shiftwidth=4
+set shiftwidth=2
 set showcmd
 set showmatch
 set smartcase
 set smarttab
-set softtabstop=4
+set softtabstop=2
 set splitbelow
 set splitright
 set statusline=%<%f\                     " Filename
@@ -41,7 +41,7 @@ set statusline+=%w%h%m%r                 " Options
 set statusline+=%{fugitive#statusline()} " Git Hotness
 set statusline+=\ [%{&ff}/%Y]            " Filetype
 set statusline+=\ [%{getcwd()}]          " Current dir
-set tabstop=4
+set tabstop=2
 set title
 set undodir=~/.tmp/vim/undo/
 set undofile
