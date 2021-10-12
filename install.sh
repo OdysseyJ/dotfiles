@@ -19,6 +19,7 @@ brew install cask
 brew install ripgrep
 brew install the_silver_searcher
 brew install lsd
+brew install direnv
 brew install zsh-syntax-highlighting
 brew tap homebrew/cask-fonts
 brew install --cask font-hack-nerd-font
