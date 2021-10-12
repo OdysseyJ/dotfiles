@@ -145,6 +145,9 @@ eval "$(pyenv init --path)"
 
 eval "$(pyenv init -)"
 
+# for direnv
+eval "$(direnv hook zsh)"
+
 # Make sure to restart your entire logon session
 # for changes to profile files to take effect.
 
