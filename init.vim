@@ -9,6 +9,7 @@ set autoindent
 set backspace=indent,eol,start
 set copyindent
 set cursorline
+set clipboard=unnamed
 set encoding=UTF-8
 set expandtab
 set formatoptions=cqnr1
@@ -167,10 +168,13 @@ map <Leader>c<space> <plug>NERDComCommentN
 " -----------------------------
 " Plugin: Startify
 " -----------------------------
+"
 let g:startify_bookmarks = systemlist("cut -sd' ' -f 2- ~/.NERDTreeBookmarks")
 nnoremap <leader>sl :SLoad 
 nnoremap <leader>sc :SClose<CR>
 nnoremap <leader>ss :SSave
+
+let g:startify_session_persistence = 1
 
 " -------------
 " Plugin: easymotion
