@@ -18,10 +18,7 @@ plugins=(git fzf)
 
 # lsd
 
-<<<<<<< Updated upstream
-=======
 export PYENV_VIRTUALENV_DISABLE_PROMPT=1
->>>>>>> Stashed changes
 export LDFLAGS="-L/usr/local/opt/openssl/lib"
 export CPPFLAGS="-I/usr/local/opt/openssl/include"
 
