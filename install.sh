@@ -73,6 +73,7 @@ ln -s -f ~/.dotfiles/init.vim ~/.config/nvim/init.vim
 ln -s -f ~/.dotfiles/zshrc ~/.zshrc
 ln -s -f ~/.dotfiles/.tmux/tmux.conf ~/.tmux.conf
 ln -s -f ~/.dotfiles/.tmux/tmux.conf.local ~/.tmux.conf.local
+ln -s -f ~/.dotfiles/coc-settings.json ~/.config/nvim/coc-settings.json
 
 # Remove outdated versions from the cellar.
 brew cleanup
