@@ -338,9 +338,14 @@ let g:VM_maps['Find Under']         = '<C-n>'           " replace C-n
 let g:VM_maps['Find Subword Under'] = '<C-n>'           " replace visual C-n
 
 " ------------
-" Plugin: Coc
+" Plugin: pynvim
 " ------------
 let g:python3_host_prog = '/usr/local/bin/python3'
+let g:python2_host_prog = '/usr/local/bin/python'
+
+" ------------
+" Plugin: Coc
+" ------------
 let g:coc_global_extensions = ['coc-json', 'coc-snippets', 'coc-git', 'coc-python', 'coc-tsserver', 'coc-eslint', 'coc-tslint-plugin', 'coc-styled-components', 'coc-prettier']
 set updatetime=300
 
@@ -461,8 +466,6 @@ if (has("termguicolors"))
  set termguicolors
 endif
 
-
-let g:python3_host_prog=$HOME.'/.venv/bin/python3'
 
 " For Neovim 0.1.3 and 0.1.4
 let $NVIM_TUI_ENABLE_TRUE_COLOR=1
