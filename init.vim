@@ -340,13 +340,13 @@ let g:VM_maps['Find Subword Under'] = '<C-n>'           " replace visual C-n
 " ------------
 " Plugin: pynvim
 " ------------
-let g:python3_host_prog = '/usr/local/bin/python3'
-let g:python2_host_prog = '/usr/local/bin/python'
+let g:python_host_prog = '/Users/seongwoon/.pyenv/versions/queenspark/bin/python'
+let g:python3_host_prog = '/Users/seongwoon/.pyenv/versions/blog/bin/python'
 
 " ------------
 " Plugin: Coc
 " ------------
-let g:coc_global_extensions = ['coc-json', 'coc-snippets', 'coc-git', 'coc-python', 'coc-tsserver', 'coc-eslint', 'coc-tslint-plugin', 'coc-styled-components', 'coc-prettier']
+let g:coc_global_extensions = ['coc-json', 'coc-snippets', 'coc-git', 'coc-htmldjango', 'coc-pyright', 'coc-tsserver', 'coc-eslint', 'coc-tslint-plugin', 'coc-styled-components', 'coc-prettier']
 set updatetime=300
 
 " Use tab for trigger completion with characters ahead and navigate.
