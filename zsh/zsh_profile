@@ -1,0 +1,17 @@
+# Load the shell dotfiles, and then some:
+# * ~/.path can be used to extend `$PATH`.
+# * ~/.extra can be used for other settings you don’t want to commit.
+# for file in ~/.{path,exports,aliases,functions,extra}; do
+for file in ~/.{path,exports,aliases,functions,extra}; do
+	[ -r "$file" ] && [ -f "$file" ] && source "$file";
+done;
+unset file;
+
+export ZSH="/Users/seongwoon/.oh-my-zsh"
+ZSH_THEME="powerlevel10k/powerlevel10k"
+
+source $ZSH/oh-my-zsh.sh
+source /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+
+plugins=(git fzf)
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh

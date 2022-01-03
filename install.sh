@@ -64,12 +64,23 @@ else
 fi
 
 # Link rc files
+
+# zsh
+ln -s -f ~/.dotfiles/zsh/zshrc ~/.zshrc
+ln -s -f ~/.dotfiles/zsh/zsh_profile ~/.zsh_profile
+ln -s -f ~/.dotfiles/zsh/aliases ~/.aliases
+ln -s -f ~/.dotfiles/zsh/path ~/.path
+ln -s -f ~/.dotfiles/zsh/exports ~/.exports
+ln -s -f ~/.dotfiles/zsh/p10k.zsh ~/.p10k.zsh
+
+# tmux
+ln -s -f ~/.dotfiles/tmux/tmux.conf ~/.tmux.conf
+
+# vim
 mkdir ~/.config/nvim/
-ln -s -f ~/.dotfiles/init.vim ~/.config/nvim/init.vim
-ln -s -f ~/.dotfiles/zshrc ~/.zshrc
-ln -s -f ~/.dotfiles/.tmux/tmux.conf ~/.tmux.conf
-ln -s -f ~/.dotfiles/.tmux/tmux.conf.local ~/.tmux.conf.local
-ln -s -f ~/.dotfiles/coc-settings.json ~/.config/nvim/coc-settings.json
+ln -s -f ~/.dotfiles/nvim/init.vim ~/.config/nvim/init.vim
+ln -s -f ~/.dotfiles/nvim/coc-settings.json ~/.config/nvim/coc-settings.json
+ln -s -f ~/.dotfiles/nvim/ideavimrc ~/.ideavimrc
 
 # Install vim dependencies.
 vim +PlugInstall +qall
