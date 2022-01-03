@@ -126,7 +126,8 @@ Plug 'zivyangll/git-blame.vim'
 Plug 'terryma/vim-smooth-scroll'
 
 " multi cursor
-Plug 'mg979/vim-visual-multi', {'branch': 'master'}
+" Plug 'mg979/vim-visual-multi', {'branch': 'master'}
+Plug 'terryma/vim-multiple-cursors'
 
 " coc.nvim
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
@@ -140,7 +141,7 @@ Plug 'tpope/vim-repeat'
 " vim theme
 Plug 'mhartington/oceanic-next'
 
-" fancy start screen
+" vim session management
 Plug 'mhinz/vim-startify'
 
 
