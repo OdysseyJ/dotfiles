@@ -1,5 +1,9 @@
 #!/bin/bash
 
+# Before start
+# install node.js
+# sudo npm install -g n
+
 cd ~
 
 # Install homebrew
@@ -50,6 +54,9 @@ if [ -d ".oh-my-zsh" ]; then
 else
     sh -c "$(wget https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh -O -)"
 fi
+
+# Oh My Zsh Theme
+git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/themes/powerlevel10k
 
 # Backup old files
 mkdir -p .old_dotfiles
