@@ -2,9 +2,7 @@ set NERDTree
 set commentary
 set multiple-cursors
 set surround
-
-# for turn on/off vim
 set visualbell
 
-source ./init.vim
+source ~/.dotfiles/init.vim
 map <Leader>c<space> <Action>(CommentByLineComment)

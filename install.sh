@@ -9,6 +9,7 @@ cd ~
 brew install git
 brew install tmux
 brew install zsh
+brew install iterm2
 brew install ctags-exuberant
 brew install wget
 brew install httpie
