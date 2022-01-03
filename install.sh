@@ -63,17 +63,18 @@ else
     git clone https://github.com/tmux-plugins/tpm .tmux/plugins/tpm
 fi
 
-# Install vim dependencies.
-vim +PlugInstall +qall
-vim +"CocInstall coc-python" +qall
-~/.tmux/plugins/tpm/scripts/install_plugins.sh
-
 # Link rc files
+mkdir ~/.config/nvim/
 ln -s -f ~/.dotfiles/init.vim ~/.config/nvim/init.vim
 ln -s -f ~/.dotfiles/zshrc ~/.zshrc
 ln -s -f ~/.dotfiles/.tmux/tmux.conf ~/.tmux.conf
 ln -s -f ~/.dotfiles/.tmux/tmux.conf.local ~/.tmux.conf.local
 ln -s -f ~/.dotfiles/coc-settings.json ~/.config/nvim/coc-settings.json
+
+# Install vim dependencies.
+vim +PlugInstall +qall
+vim +"CocInstall coc-python" +qall
+~/.tmux/plugins/tpm/scripts/install_plugins.sh
 
 # Remove outdated versions from the cellar.
 brew cleanup
