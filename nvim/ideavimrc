@@ -1,4 +1,5 @@
 set NERDTree 
+set vim-easymotion
 set commentary
 set multiple-cursors
 set surround
