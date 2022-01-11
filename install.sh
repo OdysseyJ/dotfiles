@@ -4,6 +4,9 @@
 # install node.js
 # sudo npm install -g n
 
+# install goorm editor
+# https://github.com/gureum/gureum/wiki/Help-Install
+
 cd ~
 
 # Install homebrew

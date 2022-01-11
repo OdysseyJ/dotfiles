@@ -3,3 +3,4 @@ alias ll='ls -alhF'
 alias vim="nvim"
 alias vi="nvim"
 alias vimdiff="nvim -d"
+alias aws='docker run --rm -it -v ~/.aws:/root/.aws -v $(pwd):/aws amazon/aws-cli'

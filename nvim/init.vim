@@ -341,8 +341,8 @@ let g:VM_maps['Find Subword Under'] = '<C-n>'           " replace visual C-n
 " ------------
 " Plugin: pynvim
 " ------------
-let g:python_host_prog = '/Users/seongwoon/.pyenv/versions/queenspark/bin/python'
-let g:python3_host_prog = '/Users/seongwoon/.pyenv/versions/blog/bin/python'
+" let g:python_host_prog = '/Users/$USER/.pyenv/versions/bin/python'
+let g:python3_host_prog = '/Users/$USER/.pyenv/shims/python3'
 
 " ------------
 " Plugin: Coc
