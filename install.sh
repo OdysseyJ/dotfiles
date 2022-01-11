@@ -100,3 +100,7 @@ vim +"CocInstall coc-python" +qall
 
 # Remove outdated versions from the cellar.
 brew cleanup
+
+# final step
+# :CheckHealth
+# and finish install
