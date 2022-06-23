@@ -5,7 +5,7 @@ set multiple-cursors
 set surround
 set visualbell
 
-source ~/.dotfiles/nvim/init.vim
+source ~/.dotfiles/nvim/init_ideavim.vim
 map <Leader>c<space> <Action>(CommentByLineComment)
 
 # multiple-cursors
