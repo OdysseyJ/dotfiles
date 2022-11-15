@@ -10,5 +10,5 @@ unset file;
 export ZSH="/Users/$USER/.oh-my-zsh"
 ZSH_THEME="powerlevel10k/powerlevel10k"
 
-plugins=(git fzf)
+plugins=(git fzf poetry)
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
