@@ -17,6 +17,12 @@ map <C-X> <A-X>
 map g<C-N> g<A-N>
 # end multiple-cursors
 
+# start custom keymapping
+imap <C-o> <esc>o
+nmap <C-O> <Action>(OverrideMethods)
+nmap <S-C-R> <Action>(Run)
+# end custom keymapping
+
 # start editor preference on ideavim
 sethandler <C-D> a:vim
 sethandler <C-E> a:ide
@@ -28,9 +34,9 @@ sethandler <C-J> a:vim
 sethandler <C-K> a:vim
 sethandler <C-M> a:vim
 sethandler <C-N> a:vim
-sethandler <C-O> a:ide
+sethandler <C-O> a:vim
 sethandler <C-P> a:vim
-sethandler <C-R> a:ide
+sethandler <C-R> a:vim
 sethandler <C-T> a:ide
 sethandler <C-W> a:vim
 # end editor preference on ideavim
