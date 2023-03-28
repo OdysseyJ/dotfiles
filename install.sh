@@ -25,6 +25,8 @@ brew install cask
 brew install ripgrep
 brew install the_silver_searcher
 brew install direnv
+brew tap ankitpokhrel/jira-cli
+brew install jira-cli
 
 # Visual
 brew install lsd
