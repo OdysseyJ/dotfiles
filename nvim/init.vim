@@ -311,7 +311,7 @@ let g:airline#extensions#tabline#buffer_nr_format = '%s:' " buffer number format
 let g:airline_powerline_fonts=1
 let g:airline_theme='oceanicnext'
 
-nnoremap <C-S-t> :enew<Enter>         " 새로운 버퍼를 연다
+nnoremap <C-t> :enew<Enter>         " 새로운 버퍼를 연다
 nnoremap <C-h> :bprevious!<Enter>    " 이전 버퍼로 이동
 nnoremap <C-l> :bnext!<Enter>        " 다음 버퍼로 이동
 
