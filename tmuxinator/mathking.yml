@@ -1,0 +1,20 @@
+# /Users/seongwoon/.config/tmuxinator/tcms.yml
+
+name: mathking
+root: ~/Documents/MathkingApi
+
+startup_window: editor
+
+windows:
+  - editor:
+      layout: even-horizontal
+      panes:
+        - vi .
+        - claude
+
+  - shells:
+      layout: even-horizontal
+      panes:
+        - export DJANGO_SETTINGS_MODULE=MathkingApi.settings.project.api.dev_api_in_local && python manage.py shell
+        - export DJANGO_SETTINGS_MODULE=MathkingApi.settings.project.api.prod_api_in_local && python manage.py shell
+        - 

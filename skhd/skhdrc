@@ -1,0 +1,5 @@
+shift + cmd - 1 : yabai -m display --focus 1
+shift + cmd - 2 : yabai -m display --focus 2
+shift + cmd - 3 : yabai -m display --focus 3
+
+shift + cmd - 0x32 : yabai -m display --focus next || yabai -m display --focus first

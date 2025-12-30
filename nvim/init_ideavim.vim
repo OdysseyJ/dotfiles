@@ -87,3 +87,35 @@ autocmd bufnewfile,bufread *.go set filetype=go
 autocmd bufnewfile,bufread *.html set filetype=htmldjango
 autocmd bufnewfile,bufread *.jinja set filetype=htmldjango
 autocmd bufnewfile,bufread *.json,*.jsx,*.tsx set filetype=javascript
+
+" function! FormatList()
+"   " Match the list and replace with formatted version
+"   '<,'>s/\v\[(\s*('[^']*'|[^,\[\]]+)\s*(,\s*('[^']*'|[^,\[\]]+)\s*)*)\]/\= '[\r' . join(map(split(submatch(1), ',\s*'), 'v:val . ","'), "\r") . '\r]'/g
+" endfunction
+" function! FormatList()
+"   " Match the list and replace with formatted version
+"   '<,'>s/\v\[(\s*('[^']*'|[^,\[\]]+)\s*(,\s*('[^']*'|[^,\[\]]+)\s*)*)\]/\=substitute("[\r" . join(split(submatch(1), ',\s*'), ",\r") . ",\r]", '\n', '\r', 'g')/g
+" endfunction
+" function! FormatList()
+"   " Add newlines and commas after each element, and format the list
+"   '<,'>s/\v\[(\s*('[^']*'|[^,\[\]]+)\s*(,\s*('[^']*'|[^,\[\]]+)\s*)*)\]/[\r\=join(split(submatch(1), ',\s*'), ",\r") . ",\r]"/g
+" endfunction
+" function! FormatList()
+"   " Match the list and replace with formatted version
+"   '<,'>s/\v\[(\s*('[^']*'|[^,\[\]]+)\s*(,\s*('[^']*'|[^,\[\]]+)\s*)*)\]/\= '[' . join(map(split(submatch(1), ',\s*'), 'v:val'), ",\r") . ',\r]'/g
+" endfunction
+
+" function! FormatList()
+"   " Add newlines and commas after each element, and format the list
+"   '<,'>s/\v\[(\s*('[^']*'|[^\[\],]+)\s*(,\s*('[^']*'|[^\[\],]+)\s*)*)\]/\= "[\r" . join(split(submatch(1), '\s*,\s*'), ",\r") . ",\r]"/g
+" endfunction
+function! FormatList()
+  " Surround the selection with brackets and format the list
+  normal! I[
+  normal! A,
+  '<,'>s/,/,<CR>/g
+  '<,'>s/\(\[[^]]*\),/\1\r]/g
+endfunction
+
+" Map the function to leader + b in visual mode
+vnoremap <leader>b :<C-U>call FormatList()<CR>

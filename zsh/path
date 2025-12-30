@@ -1,3 +1,4 @@
 # path
 # Created by `pipx` on 2022-09-23 03:30:18
 export PATH="$PATH:/Users/seongwoon/.local/bin"
+export PATH=$HOME/flutter/bin:$PATH

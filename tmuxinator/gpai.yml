@@ -1,0 +1,27 @@
+# /Users/seongwoon/.config/tmuxinator/gpai.yml
+
+name: gpai
+root: ~/Documents/gpai-monorepo
+
+on_project_start: docker-compose up -d
+on_project_stop: docker-compose down
+
+startup_window: editor
+
+windows:
+  - editor:
+      layout: even-horizontal
+      panes:
+        - vi .
+        - claude
+
+  - servers:
+      layout: even-horizontal
+      panes:
+        - cd backend && wrangler dev --env development
+        - cd web && pnpm run dev --port 3000
+        - cd python-worker && uv run python server.py
+
+  - shell:
+      panes:
+        - 

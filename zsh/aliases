@@ -3,7 +3,6 @@ alias ll='ls -alhF'
 alias vim="nvim"
 alias vi="nvim"
 alias vimdiff="nvim -d"
-alias aws='docker run --rm -it -v ~/.aws:/root/.aws -v $(pwd):/aws amazon/aws-cli'
 alias gcm='git commit -m'
 alias ga='git add'
 alias gplo='git pull origin'
@@ -15,3 +14,10 @@ alias gtsrs='gt stack restack'
 alias gtclbr='git branch | grep -v "master" | xargs git branch -D'
 alias gaf='git diff --cached --name-only --diff-filter=ACMRTUXB | xargs -I{} git add {}'
 alias awslog='python3 /Users/seongwoon/Documents/rich_awslog/awslog.py'
+alias pm='python manage.py'
+alias pmg='python manage.py migrate'
+
+alias gpai-worker-prod='gcloud beta logging tail "resource.labels.service_name=\"python-worker-prod\" AND logName=~\"stdout\"" --project=gpai-app --format="value(timestamp.date(\"%H:%M:%S\"), text_payload)" 2>/dev/null'
+alias gpai-worker-dev='gcloud beta logging tail "resource.labels.service_name=\"python-worker-dev\" AND logName=~\"stdout\"" --project=gpai-app --format="value(timestamp.date(\"%H:%M:%S\"), text_payload)" 2>/dev/null'
+alias gpai-backend-prod='wrangler tail --env production'
+alias gpai-backend-dev='wrangler tail --env development'

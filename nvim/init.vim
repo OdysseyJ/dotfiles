@@ -401,6 +401,14 @@ function! s:show_documentation()
   endif
 endfunction
 
+function! FormatList()
+  " Add newlines and commas after each element, and format the list
+  '<,'>s/\v\[(\s*('[^']*'|[^\[\],]+)\s*(,\s*('[^']*'|[^\[\],]+)\s*)*)\]/\= "[\r" . join(split(submatch(1), '\s*,\s*'), ",\r") . ",\r]"/g
+endfunction
+
+" Map the function to leader + b in visual mode
+vnoremap <leader>b :<C-U>call FormatList()<CR>
+
 " Highlight the symbol and its references when holding the
 autocmd CursorHold * silent call CocActionAsync('highlight')
 

@@ -1,0 +1,20 @@
+# /Users/seongwoon/.config/tmuxinator/tcms.yml
+
+name: tcms
+root: ~/Documents/TcmsApi
+
+startup_window: editor
+
+windows:
+  - editor:
+      layout: even-horizontal
+      panes:
+        - vi .
+        - claude
+
+  - shells:
+      layout: even-horizontal
+      panes:
+        - export DJANGO_SETTINGS_MODULE=TcmsApi.settings_dev_local && python manage.py shell
+        - export DJANGO_SETTINGS_MODULE=TcmsApi.settings_prod_local && python manage.py shell
+        - 
