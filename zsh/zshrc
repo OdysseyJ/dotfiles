@@ -11,23 +11,10 @@ fi
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 
-eval "$(direnv hook zsh)"
-export PYENV_ROOT="$HOME/.pyenv"
-export PATH="$PYENV_ROOT/bin:$PATH"
-
-# GKE
-export USE_GKE_GCLOUD_AUTH_PLUGIN=True
-source "$(brew --prefix)/share/google-cloud-sdk/path.zsh.inc"
-source "$(brew --prefix)/share/google-cloud-sdk/completion.zsh.inc"
-
-if command -v pyenv 1>/dev/null 2>&1; then
-  eval "$(pyenv init -)"
-fi
-
-eval "$(pyenv virtualenv-init -)"
-
+# oh-my-zsh
 source $ZSH/oh-my-zsh.sh
 source /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+
 #compdef gt
 ###-begin-gt-completions-###
 #
@@ -48,34 +35,5 @@ _gt_yargs_completions()
 compdef _gt_yargs_completions gt
 ###-end-gt-completions-###
 
-# The next line updates PATH for the Google Cloud SDK.
-if [ -f '/Users/seongwoon/Downloads/google-cloud-sdk/path.zsh.inc' ]; then . '/Users/seongwoon/Downloads/google-cloud-sdk/path.zsh.inc'; fi
-
-# The next line enables shell command completion for gcloud.
-if [ -f '/Users/seongwoon/Downloads/google-cloud-sdk/completion.zsh.inc' ]; then . '/Users/seongwoon/Downloads/google-cloud-sdk/completion.zsh.inc'; fi
-
-export PATH="/usr/local/opt/postgresql@13/bin:$PATH"
-export PATH="/opt/homebrew/opt/ruby/bin:$PATH"
-export PATH=~/.npm-global/bin:$PATH
-
-# opencode
-export PATH=/Users/seongwoon/.opencode/bin:$PATH
-
-# bun completions
-[ -s "/Users/seongwoon/.bun/_bun" ] && source "/Users/seongwoon/.bun/_bun"
-
-# bun
-export BUN_INSTALL="$HOME/.bun"
-export PATH="$BUN_INSTALL/bin:$PATH"
-
-# Added by Antigravity
-export PATH="/Users/seongwoon/.antigravity/antigravity/bin:$PATH"
-
-# pnpm
-export PNPM_HOME="/Users/seongwoon/Library/pnpm"
-case ":$PATH:" in
-  *":$PNPM_HOME:"*) ;;
-  *) export PATH="$PNPM_HOME:$PATH" ;;
-esac
-# pnpm end
+eval "$(direnv hook zsh)"
 eval "$(zoxide init zsh)"

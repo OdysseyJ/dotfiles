@@ -1,14 +1,18 @@
-export PATH="$HOME/bin:$PATH";
-export PYENV_VIRTUALENV_DISABLE_PROMPT=1
 export LDFLAGS="-L/usr/local/opt/openssl/lib"
 export CPPFLAGS="-I/usr/local/opt/openssl/include"
 export EDITOR=/usr/local/bin/nvim
 export LC_ALL=en_US.UTF-8
 export LANG=en_US.UTF-8
 
-# pyenv
-export PYENV_ROOT="$HOME/.pyenv"
-export PATH="$PYENV_ROOT/bin:$PATH"
-eval "$(pyenv init --path)"
-eval "$(pyenv init -)"
+# pnpm
+export PNPM_HOME="/Users/seongwoon/Library/pnpm"
+case ":$PATH:" in
+  *":$PNPM_HOME:"*) ;;
+  *) export PATH="$PNPM_HOME:$PATH" ;;
+esac
 
+# antigravity
+export PATH="/Users/seongwoon/.antigravity/antigravity/bin:$PATH"
+
+# bun
+export BUN_INSTALL="$HOME/.bun"

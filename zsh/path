@@ -1,4 +1,8 @@
-# path
-# Created by `pipx` on 2022-09-23 03:30:18
+export PATH="$HOME/bin:$PATH";
 export PATH="$PATH:/Users/seongwoon/.local/bin"
 export PATH=$HOME/flutter/bin:$PATH
+export PATH="/opt/homebrew/opt/ruby/bin:$PATH"
+export PATH=~/.npm-global/bin:$PATH
+
+# bun
+export PATH="$BUN_INSTALL/bin:$PATH"

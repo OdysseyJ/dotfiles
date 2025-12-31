@@ -10,8 +10,5 @@ unset file;
 export ZSH="/Users/$USER/.oh-my-zsh"
 ZSH_THEME="powerlevel10k/powerlevel10k"
 
-# FIXME
-export JIRA_API_TOKEN=''
-
 plugins=(git fzf fzf-zsh-plugin)
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh

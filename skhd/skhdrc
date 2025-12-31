@@ -1,5 +1,11 @@
+# 모니터 포커스 스위칭
 shift + cmd - 1 : yabai -m display --focus 1
 shift + cmd - 2 : yabai -m display --focus 2
 shift + cmd - 3 : yabai -m display --focus 3
 
-shift + cmd - 0x32 : yabai -m display --focus next || yabai -m display --focus first
+# 창 크기 조절
+ctrl + cmd - j : yabai -m window --grid 1:2:0:0:1:1 # 왼쪽
+ctrl + cmd - k : yabai -m window --grid 1:2:1:0:1:1 # 오른쪽
+ctrl + cmd - u : yabai -m window --grid 2:1:0:0:1:1 # 위
+ctrl + cmd - n : yabai -m window --grid 2:1:0:1:1:1 # 아래
+ctrl + cmd - return : yabai -m window --grid 1:1:0:0:1:1 # 최대화
